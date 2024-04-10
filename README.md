@@ -3,7 +3,7 @@ Runs on LM4F120/TM4C123 microcontroller
 
 Author: Fady Abd Elshahid
 
-This is a project for the edX Lab 15 of Embedded Systems Shape The World MOOC
+This is a project for the edX Lab 15 of "Embedded Systems - Shape The World: Multi-Threaded Interfacing" MOOC UTAustinX UT.6.20x by Jon Valvano & Ramesh Yerraballi 
 
 ### Game Mechanics
 The game is based on the old Space Invaders Game and uses the Nokia 5110 LCD as display
