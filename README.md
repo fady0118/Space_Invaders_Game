@@ -1,4 +1,6 @@
 # Space Invaders Game
+Coded and debugged in Keil_v5 in C language
+
 Runs on LM4F120/TM4C123 microcontroller
 
 Author: Fady Abd Elshahid
