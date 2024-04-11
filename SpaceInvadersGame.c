@@ -249,14 +249,18 @@ Stype player;		// Player sprites
 
 
 //---------------Enemy_State_Initialization------------
-void Enemy_Init(void){
-unsigned long i;
-	for(i=0;i<5;i++){
-	Enemy[i].x=(i+1)*4+i*12-2; // initail enemy x-positions
-	Enemy[i].y=9;
+void Enemy_Init(unsigned long random){
+	unsigned long spacing=5; //space between enemies 
+	for(unsigned long i=0;i<5;i++){
+	// The x-position is fed with random value from 0 to 19 which 
+	// after adding to the equation make leftmost and righmost pixels on the display
+	Enemy[i].x = (i+1)*spacing + i*enemy_width + random; // initial enemy x-positions
+	Enemy[i].y=9; // initial enemy y-positions
+	// ptr -> images 
+	// by using 2 appropriate images and switching between them on every movement, it will give the illusion of motion
 	Enemy[i].image[0]=	Enemy1;	
 	Enemy[i].image[1]=	Enemy2;	
-	Enemy[i].life=1;
+	Enemy[i].life=1; // enemy life
 	}
 }
 //---------------player_State_Initialization------------
@@ -319,6 +323,20 @@ Nokia5110_ClearBuffer(); // clear display
 Nokia5110_DisplayBuffer(); //draw buffer
 FrameCount=(FrameCount+1)&0x01; // switches between 2 images on every movement 0,1,0,1,...
 }
+//------------------random_number_generator------------------
+//Using Source: Numerical Recipes
+//constants: a=1664525,c=1013904223,m=2^32
+//Inputs: Min value, Max value, Seed value
+//Outputs: Returns a random value between Min & Max
+unsigned long Randomize(unsigned long MIN,unsigned long MAX,unsigned long x){
+	// constants
+    unsigned long a=1664525,c=1013904223,m=pow(2,32);
+	// Linear congruential generator equation
+    x=(a*x+c)%m;
+	// scale down to a value between MIN & MAX
+    x=round( (((float)x/m)*(MAX-MIN))+MIN );
+    return x;
+}
 
 int main(void){ 
 	//Initializations
@@ -337,8 +355,8 @@ int main(void){
 	Nokia5110_ClearBuffer();
 	Nokia5110_DisplayBuffer();
 	//----------Draw_Characters------------
-	Enemy_Init();
-	Draw();
+	Enemy_Init(Randomize(0,19,NVIC_ST_CURRENT_R)); //seed with current systick value
+	Draw();//draw the characters
   while(1){ 
 		// Wait for Flag to be 1 then animate the game
 while(Flag!=speed_divider){};
