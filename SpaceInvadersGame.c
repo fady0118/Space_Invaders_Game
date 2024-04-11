@@ -338,6 +338,7 @@ int main(void){
 	Nokia5110_DisplayBuffer();
 	//----------Draw_Characters------------
 	Enemy_Init();
+	Draw();
   while(1){ 
 		// Wait for Flag to be 1 then animate the game
 while(Flag!=speed_divider){};

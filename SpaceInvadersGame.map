@@ -52,6 +52,7 @@ Section Cross References
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.text.Delay1ms) for Delay1ms
     spaceinvadersgame.o(.text.main) refers to nokia5110.o(.text.Nokia5110_ClearBuffer) for Nokia5110_ClearBuffer
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.text.Enemy_Init) for Enemy_Init
+    spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.text.Draw) for Draw
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.bss.Flag) for Flag
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.data.speed_divider) for speed_divider
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.text.Move) for Move
@@ -429,21 +430,21 @@ Image Symbol Table
     lcdwrite                                 0x00000c59   Thumb Code   144  nokia5110.o(.text.lcdwrite)
     [Anonymous Symbol]                       0x00000c58   Section        0  nokia5110.o(.text.lcdwrite)
     [Anonymous Symbol]                       0x00000ce8   Section        0  spaceinvadersgame.o(.text.main)
-    i.ADC1_In                                0x00000d6c   Section        0  texas.o(i.ADC1_In)
-    i.ADC1_Init                              0x00000d78   Section        0  texas.o(i.ADC1_Init)
-    i.Encrypt                                0x00000e4c   Section        0  texas.o(i.Encrypt)
-    i.PLL_Init                               0x00000eb8   Section        0  texas.o(i.PLL_Init)
-    i.SetCode                                0x00000f34   Section        0  texas.o(i.SetCode)
-    i.SetCourse                              0x00000f4c   Section        0  texas.o(i.SetCourse)
-    i.SetGrade                               0x00000f64   Section        0  texas.o(i.SetGrade)
-    i.TExaS_Init                             0x00001030   Section        0  texas.o(i.TExaS_Init)
-    i.Timer4A_Handler                        0x000012c0   Section        0  texas.o(i.Timer4A_Handler)
-    i.Timer5A_Handler                        0x000012e0   Section        0  texas.o(i.Timer5A_Handler)
-    i.UART0_Init                             0x00001b60   Section        0  texas.o(i.UART0_Init)
-    i.checkADCconfiguration                  0x00001c20   Section        0  texas.o(i.checkADCconfiguration)
-    i.checkDisplayconfiguration              0x00001cc8   Section        0  texas.o(i.checkDisplayconfiguration)
-    i.checkLinearity                         0x00001f70   Section        0  texas.o(i.checkLinearity)
-    .constdata                               0x00002114   Section     7056  texas.o(.constdata)
+    i.ADC1_In                                0x00000d70   Section        0  texas.o(i.ADC1_In)
+    i.ADC1_Init                              0x00000d7c   Section        0  texas.o(i.ADC1_Init)
+    i.Encrypt                                0x00000e50   Section        0  texas.o(i.Encrypt)
+    i.PLL_Init                               0x00000ebc   Section        0  texas.o(i.PLL_Init)
+    i.SetCode                                0x00000f38   Section        0  texas.o(i.SetCode)
+    i.SetCourse                              0x00000f50   Section        0  texas.o(i.SetCourse)
+    i.SetGrade                               0x00000f68   Section        0  texas.o(i.SetGrade)
+    i.TExaS_Init                             0x00001034   Section        0  texas.o(i.TExaS_Init)
+    i.Timer4A_Handler                        0x000012c4   Section        0  texas.o(i.Timer4A_Handler)
+    i.Timer5A_Handler                        0x000012e4   Section        0  texas.o(i.Timer5A_Handler)
+    i.UART0_Init                             0x00001b64   Section        0  texas.o(i.UART0_Init)
+    i.checkADCconfiguration                  0x00001c24   Section        0  texas.o(i.checkADCconfiguration)
+    i.checkDisplayconfiguration              0x00001ccc   Section        0  texas.o(i.checkDisplayconfiguration)
+    i.checkLinearity                         0x00001f74   Section        0  texas.o(i.checkLinearity)
+    .constdata                               0x00002118   Section     7056  texas.o(.constdata)
     .data                                    0x20000000   Section      112  texas.o(.data)
     RealGrade                                0x20000010   Data           4  texas.o(.data)
     adc300                                   0x20000014   Data           4  texas.o(.data)
@@ -701,62 +702,62 @@ Image Symbol Table
     Nokia5110_SetCursor                      0x00000b81   Thumb Code    78  nokia5110.o(.text.Nokia5110_SetCursor)
     SysTick_Handler                          0x00000bd1   Thumb Code    68  spaceinvadersgame.o(.text.SysTick_Handler)
     SysTick_Init                             0x00000c15   Thumb Code    66  spaceinvadersgame.o(.text.SysTick_Init)
-    main                                     0x00000ce9   Thumb Code   132  spaceinvadersgame.o(.text.main)
-    ADC1_In                                  0x00000d6d   Thumb Code     6  texas.o(i.ADC1_In)
-    ADC1_Init                                0x00000d79   Thumb Code   174  texas.o(i.ADC1_Init)
-    Encrypt                                  0x00000e4d   Thumb Code    92  texas.o(i.Encrypt)
-    PLL_Init                                 0x00000eb9   Thumb Code   118  texas.o(i.PLL_Init)
-    SetCode                                  0x00000f35   Thumb Code    20  texas.o(i.SetCode)
-    SetCourse                                0x00000f4d   Thumb Code    20  texas.o(i.SetCourse)
-    SetGrade                                 0x00000f65   Thumb Code   196  texas.o(i.SetGrade)
-    TExaS_Init                               0x00001031   Thumb Code   480  texas.o(i.TExaS_Init)
-    Timer4A_Handler                          0x000012c1   Thumb Code    20  texas.o(i.Timer4A_Handler)
-    Timer5A_Handler                          0x000012e1   Thumb Code  2132  texas.o(i.Timer5A_Handler)
-    UART0_Init                               0x00001b61   Thumb Code   160  texas.o(i.UART0_Init)
-    checkADCconfiguration                    0x00001c21   Thumb Code   150  texas.o(i.checkADCconfiguration)
-    checkDisplayconfiguration                0x00001cc9   Thumb Code   636  texas.o(i.checkDisplayconfiguration)
-    checkLinearity                           0x00001f71   Thumb Code   416  texas.o(i.checkLinearity)
-    Port                                     0x00002114   Data          24  texas.o(.constdata)
-    InputPortMsgE2                           0x0000212c   Data          40  texas.o(.constdata)
-    InputPortMsgE3                           0x00002154   Data          40  texas.o(.constdata)
-    InputPortMsgE5                           0x0000217c   Data          40  texas.o(.constdata)
-    OutputPortMsg0                           0x000021a4   Data          40  texas.o(.constdata)
-    OutputPortMsg1                           0x000021cc   Data          40  texas.o(.constdata)
-    OutputPortMsg2                           0x000021f4   Data          40  texas.o(.constdata)
-    OutputPortMsg3                           0x0000221c   Data          40  texas.o(.constdata)
-    BlankMsg                                 0x00002244   Data          40  texas.o(.constdata)
-    InitializedMsg                           0x0000226c   Data          40  texas.o(.constdata)
-    IntroMsg                                 0x00002294   Data          40  texas.o(.constdata)
-    DoneMsg                                  0x000022bc   Data          40  texas.o(.constdata)
-    TestMsg                                  0x000022e4   Data          40  texas.o(.constdata)
-    LabTest                                  0x0000230c   Data        5428  texas.o(.constdata)
-    BgTest                                   0x00003840   Data         160  texas.o(.constdata)
-    ADCconfigSuccessMsg                      0x000038e0   Data          25  texas.o(.constdata)
-    ADCconfigErrorMsg                        0x000038f9   Data          29  texas.o(.constdata)
-    ADCconfigNotUsingS3Msg                   0x00003916   Data          34  texas.o(.constdata)
-    ADCconfigBadTriggerMsg                   0x00003938   Data          35  texas.o(.constdata)
-    ADCconfigBadChannelMsg                   0x0000395b   Data          35  texas.o(.constdata)
-    ADCconfigTemperatureMsg                  0x0000397e   Data          35  texas.o(.constdata)
-    ADCconfigSIENotUsedMsg                   0x000039a1   Data          33  texas.o(.constdata)
-    ADCconfigEndNotUsedMsg                   0x000039c2   Data          33  texas.o(.constdata)
-    ADCconfigDifferentialMsg                 0x000039e3   Data          36  texas.o(.constdata)
-    DisplaySuccessMsg                        0x00003a07   Data          32  texas.o(.constdata)
-    DisplayErrorMsg                          0x00003a27   Data          35  texas.o(.constdata)
-    DisplayClockOffMsg                       0x00003a4a   Data          34  texas.o(.constdata)
-    DisplayUART0WrongMsg                     0x00003a6c   Data          33  texas.o(.constdata)
-    DisplayPortAWrongMsg                     0x00003a8d   Data          33  texas.o(.constdata)
-    DisplaySSI0WrongMsg                      0x00003aae   Data          32  texas.o(.constdata)
-    Linearity90Msg                           0x00003ace   Data          35  texas.o(.constdata)
-    LinearityErrorMsg                        0x00003af1   Data          30  texas.o(.constdata)
-    LinearityOutMsg                          0x00003b0f   Data         330  texas.o(.constdata)
-    Key                                      0x00003c59   Data           8  texas.o(.constdata)
-    Scramble                                 0x00003c64   Data          32  texas.o(.constdata)
-    DeScramble                               0x00003c84   Data          32  texas.o(.constdata)
-    Enemy1                                   0x00003ca4   Data         151  spaceinvadersgame.o(.rodata.Enemy1)
-    Enemy2                                   0x00003d3b   Data         151  spaceinvadersgame.o(.rodata.Enemy2)
-    image                                    0x00003dd2   Data        2231  spaceinvadersgame.o(.rodata.image)
-    Region$$Table$$Base                      0x0000468c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000046ac   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x00000ce9   Thumb Code   136  spaceinvadersgame.o(.text.main)
+    ADC1_In                                  0x00000d71   Thumb Code     6  texas.o(i.ADC1_In)
+    ADC1_Init                                0x00000d7d   Thumb Code   174  texas.o(i.ADC1_Init)
+    Encrypt                                  0x00000e51   Thumb Code    92  texas.o(i.Encrypt)
+    PLL_Init                                 0x00000ebd   Thumb Code   118  texas.o(i.PLL_Init)
+    SetCode                                  0x00000f39   Thumb Code    20  texas.o(i.SetCode)
+    SetCourse                                0x00000f51   Thumb Code    20  texas.o(i.SetCourse)
+    SetGrade                                 0x00000f69   Thumb Code   196  texas.o(i.SetGrade)
+    TExaS_Init                               0x00001035   Thumb Code   480  texas.o(i.TExaS_Init)
+    Timer4A_Handler                          0x000012c5   Thumb Code    20  texas.o(i.Timer4A_Handler)
+    Timer5A_Handler                          0x000012e5   Thumb Code  2132  texas.o(i.Timer5A_Handler)
+    UART0_Init                               0x00001b65   Thumb Code   160  texas.o(i.UART0_Init)
+    checkADCconfiguration                    0x00001c25   Thumb Code   150  texas.o(i.checkADCconfiguration)
+    checkDisplayconfiguration                0x00001ccd   Thumb Code   636  texas.o(i.checkDisplayconfiguration)
+    checkLinearity                           0x00001f75   Thumb Code   416  texas.o(i.checkLinearity)
+    Port                                     0x00002118   Data          24  texas.o(.constdata)
+    InputPortMsgE2                           0x00002130   Data          40  texas.o(.constdata)
+    InputPortMsgE3                           0x00002158   Data          40  texas.o(.constdata)
+    InputPortMsgE5                           0x00002180   Data          40  texas.o(.constdata)
+    OutputPortMsg0                           0x000021a8   Data          40  texas.o(.constdata)
+    OutputPortMsg1                           0x000021d0   Data          40  texas.o(.constdata)
+    OutputPortMsg2                           0x000021f8   Data          40  texas.o(.constdata)
+    OutputPortMsg3                           0x00002220   Data          40  texas.o(.constdata)
+    BlankMsg                                 0x00002248   Data          40  texas.o(.constdata)
+    InitializedMsg                           0x00002270   Data          40  texas.o(.constdata)
+    IntroMsg                                 0x00002298   Data          40  texas.o(.constdata)
+    DoneMsg                                  0x000022c0   Data          40  texas.o(.constdata)
+    TestMsg                                  0x000022e8   Data          40  texas.o(.constdata)
+    LabTest                                  0x00002310   Data        5428  texas.o(.constdata)
+    BgTest                                   0x00003844   Data         160  texas.o(.constdata)
+    ADCconfigSuccessMsg                      0x000038e4   Data          25  texas.o(.constdata)
+    ADCconfigErrorMsg                        0x000038fd   Data          29  texas.o(.constdata)
+    ADCconfigNotUsingS3Msg                   0x0000391a   Data          34  texas.o(.constdata)
+    ADCconfigBadTriggerMsg                   0x0000393c   Data          35  texas.o(.constdata)
+    ADCconfigBadChannelMsg                   0x0000395f   Data          35  texas.o(.constdata)
+    ADCconfigTemperatureMsg                  0x00003982   Data          35  texas.o(.constdata)
+    ADCconfigSIENotUsedMsg                   0x000039a5   Data          33  texas.o(.constdata)
+    ADCconfigEndNotUsedMsg                   0x000039c6   Data          33  texas.o(.constdata)
+    ADCconfigDifferentialMsg                 0x000039e7   Data          36  texas.o(.constdata)
+    DisplaySuccessMsg                        0x00003a0b   Data          32  texas.o(.constdata)
+    DisplayErrorMsg                          0x00003a2b   Data          35  texas.o(.constdata)
+    DisplayClockOffMsg                       0x00003a4e   Data          34  texas.o(.constdata)
+    DisplayUART0WrongMsg                     0x00003a70   Data          33  texas.o(.constdata)
+    DisplayPortAWrongMsg                     0x00003a91   Data          33  texas.o(.constdata)
+    DisplaySSI0WrongMsg                      0x00003ab2   Data          32  texas.o(.constdata)
+    Linearity90Msg                           0x00003ad2   Data          35  texas.o(.constdata)
+    LinearityErrorMsg                        0x00003af5   Data          30  texas.o(.constdata)
+    LinearityOutMsg                          0x00003b13   Data         330  texas.o(.constdata)
+    Key                                      0x00003c5d   Data           8  texas.o(.constdata)
+    Scramble                                 0x00003c68   Data          32  texas.o(.constdata)
+    DeScramble                               0x00003c88   Data          32  texas.o(.constdata)
+    Enemy1                                   0x00003ca8   Data         151  spaceinvadersgame.o(.rodata.Enemy1)
+    Enemy2                                   0x00003d3f   Data         151  spaceinvadersgame.o(.rodata.Enemy2)
+    image                                    0x00003dd6   Data        2231  spaceinvadersgame.o(.rodata.image)
+    Region$$Table$$Base                      0x00004690   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000046b0   Number         0  anon$$obj.o(Region$$Table)
     InPort                                   0x20000000   Data           4  texas.o(.data)
     OutPort                                  0x20000004   Data           4  texas.o(.data)
     BgTestStatus                             0x20000008   Data           1  texas.o(.data)
@@ -799,9 +800,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00004738, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x0000473c, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000046ac, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000046b0, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -888,41 +889,41 @@ Memory Map of the image
     0x00000c14   0x00000c14   0x00000042   Code   RO           13    .text.SysTick_Init  spaceinvadersgame.o
     0x00000c56   0x00000c56   0x00000002   PAD
     0x00000c58   0x00000c58   0x00000090   Code   RO           60    .text.lcdwrite      nokia5110.o
-    0x00000ce8   0x00000ce8   0x00000084   Code   RO           27    .text.main          spaceinvadersgame.o
-    0x00000d6c   0x00000d6c   0x0000000c   Code   RO          104    i.ADC1_In           texas.o
-    0x00000d78   0x00000d78   0x000000d4   Code   RO          105    i.ADC1_Init         texas.o
-    0x00000e4c   0x00000e4c   0x0000006c   Code   RO          107    i.Encrypt           texas.o
-    0x00000eb8   0x00000eb8   0x0000007c   Code   RO          108    i.PLL_Init          texas.o
-    0x00000f34   0x00000f34   0x00000018   Code   RO          110    i.SetCode           texas.o
-    0x00000f4c   0x00000f4c   0x00000018   Code   RO          111    i.SetCourse         texas.o
-    0x00000f64   0x00000f64   0x000000cc   Code   RO          112    i.SetGrade          texas.o
-    0x00001030   0x00001030   0x00000290   Code   RO          116    i.TExaS_Init        texas.o
-    0x000012c0   0x000012c0   0x00000020   Code   RO          118    i.Timer4A_Handler   texas.o
-    0x000012e0   0x000012e0   0x00000880   Code   RO          119    i.Timer5A_Handler   texas.o
-    0x00001b60   0x00001b60   0x000000c0   Code   RO          122    i.UART0_Init        texas.o
-    0x00001c20   0x00001c20   0x000000a8   Code   RO          125    i.checkADCconfiguration  texas.o
-    0x00001cc8   0x00001cc8   0x000002a8   Code   RO          126    i.checkDisplayconfiguration  texas.o
-    0x00001f70   0x00001f70   0x000001a4   Code   RO          127    i.checkLinearity    texas.o
-    0x00002114   0x00002114   0x00001b90   Data   RO          130    .constdata          texas.o
-    0x00003ca4   0x00003ca4   0x00000097   Data   RO           35    .rodata.Enemy1      spaceinvadersgame.o
-    0x00003d3b   0x00003d3b   0x00000097   Data   RO           36    .rodata.Enemy2      spaceinvadersgame.o
-    0x00003dd2   0x00003dd2   0x000008b7   Data   RO           41    .rodata.image       spaceinvadersgame.o
-    0x00004689   0x00004689   0x00000003   PAD
-    0x0000468c   0x0000468c   0x00000020   Data   RO          436    Region$$Table       anon$$obj.o
+    0x00000ce8   0x00000ce8   0x00000088   Code   RO           27    .text.main          spaceinvadersgame.o
+    0x00000d70   0x00000d70   0x0000000c   Code   RO          104    i.ADC1_In           texas.o
+    0x00000d7c   0x00000d7c   0x000000d4   Code   RO          105    i.ADC1_Init         texas.o
+    0x00000e50   0x00000e50   0x0000006c   Code   RO          107    i.Encrypt           texas.o
+    0x00000ebc   0x00000ebc   0x0000007c   Code   RO          108    i.PLL_Init          texas.o
+    0x00000f38   0x00000f38   0x00000018   Code   RO          110    i.SetCode           texas.o
+    0x00000f50   0x00000f50   0x00000018   Code   RO          111    i.SetCourse         texas.o
+    0x00000f68   0x00000f68   0x000000cc   Code   RO          112    i.SetGrade          texas.o
+    0x00001034   0x00001034   0x00000290   Code   RO          116    i.TExaS_Init        texas.o
+    0x000012c4   0x000012c4   0x00000020   Code   RO          118    i.Timer4A_Handler   texas.o
+    0x000012e4   0x000012e4   0x00000880   Code   RO          119    i.Timer5A_Handler   texas.o
+    0x00001b64   0x00001b64   0x000000c0   Code   RO          122    i.UART0_Init        texas.o
+    0x00001c24   0x00001c24   0x000000a8   Code   RO          125    i.checkADCconfiguration  texas.o
+    0x00001ccc   0x00001ccc   0x000002a8   Code   RO          126    i.checkDisplayconfiguration  texas.o
+    0x00001f74   0x00001f74   0x000001a4   Code   RO          127    i.checkLinearity    texas.o
+    0x00002118   0x00002118   0x00001b90   Data   RO          130    .constdata          texas.o
+    0x00003ca8   0x00003ca8   0x00000097   Data   RO           35    .rodata.Enemy1      spaceinvadersgame.o
+    0x00003d3f   0x00003d3f   0x00000097   Data   RO           36    .rodata.Enemy2      spaceinvadersgame.o
+    0x00003dd6   0x00003dd6   0x000008b7   Data   RO           41    .rodata.image       spaceinvadersgame.o
+    0x0000468d   0x0000468d   0x00000003   PAD
+    0x00004690   0x00004690   0x00000020   Data   RO          436    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000046ac, Size: 0x0000008c, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000046b0, Size: 0x0000008c, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x000046ac   0x00000070   Data   RW          131    .data               texas.o
-    0x20000070   0x0000471c   0x00000004   Data   RW           44    .data.count         spaceinvadersgame.o
-    0x20000074   0x00004720   0x00000004   Data   RW           32    .data.enemy_width   spaceinvadersgame.o
-    0x20000078   0x00004724   0x00000004   Data   RW           34    .data.speed_divider  spaceinvadersgame.o
-    0x2000007c   0x00004728   0x00000010   Data   RW           45    .data.vertical_array  spaceinvadersgame.o
+    0x20000000   0x000046b0   0x00000070   Data   RW          131    .data               texas.o
+    0x20000070   0x00004720   0x00000004   Data   RW           44    .data.count         spaceinvadersgame.o
+    0x20000074   0x00004724   0x00000004   Data   RW           32    .data.enemy_width   spaceinvadersgame.o
+    0x20000078   0x00004728   0x00000004   Data   RW           34    .data.speed_divider  spaceinvadersgame.o
+    0x2000007c   0x0000472c   0x00000010   Data   RW           45    .data.vertical_array  spaceinvadersgame.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000090, Load base: 0x00004738, Size: 0x00000940, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000090, Load base: 0x0000473c, Size: 0x00000940, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -947,12 +948,12 @@ Image component sizes
 
        272          0          0          0          0        660   adc.o
       1214          4          0          0        504       4146   nokia5110.o
-       918          0       2533         28        116       3050   spaceinvadersgame.o
+       922          0       2533         28        116       3051   spaceinvadersgame.o
        692        632          0          0       1024        948   startup.o
       5032        592       7056        112        628      29993   texas.o
 
     ----------------------------------------------------------------------
-      8144       1228       9624        140       2272      38797   Object Totals
+      8148       1228       9624        140       2272      38798   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         16          0          3          0          0          0   (incl. Padding)
 
@@ -1001,15 +1002,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      8468       1244       9624        140       2368      38729   Grand Totals
-      8468       1244       9624        140       2368      38729   ELF Image Totals
-      8468       1244       9624        140          0          0   ROM Totals
+      8472       1244       9624        140       2368      38730   Grand Totals
+      8472       1244       9624        140       2368      38730   ELF Image Totals
+      8472       1244       9624        140          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                18092 (  17.67kB)
+    Total RO  Size (Code + RO Data)                18096 (  17.67kB)
     Total RW  Size (RW Data + ZI Data)              2508 (   2.45kB)
-    Total ROM Size (Code + RO Data + RW Data)      18232 (  17.80kB)
+    Total ROM Size (Code + RO Data + RW Data)      18236 (  17.81kB)
 
 ==============================================================================
 
