@@ -17,10 +17,8 @@ Section Cross References
     startup.o(.text) refers to startup.o(STACK) for StackMem
     spaceinvadersgame.o(.ARM.exidx.text.SysTick_Init) refers to spaceinvadersgame.o(.text.SysTick_Init) for [Anonymous Symbol]
     spaceinvadersgame.o(.text.SysTick_Handler) refers to spaceinvadersgame.o(.bss.Flag) for Flag
-    spaceinvadersgame.o(.text.SysTick_Handler) refers to spaceinvadersgame.o(.data.speed_divider) for speed_divider
     spaceinvadersgame.o(.ARM.exidx.text.SysTick_Handler) refers to spaceinvadersgame.o(.text.SysTick_Handler) for [Anonymous Symbol]
     spaceinvadersgame.o(.ARM.exidx.text.Delay1ms) refers to spaceinvadersgame.o(.text.Delay1ms) for [Anonymous Symbol]
-    spaceinvadersgame.o(.text.Enemy_Init) refers to spaceinvadersgame.o(.data.enemy_width) for enemy_width
     spaceinvadersgame.o(.text.Enemy_Init) refers to spaceinvadersgame.o(.bss.Enemy) for Enemy
     spaceinvadersgame.o(.text.Enemy_Init) refers to spaceinvadersgame.o(.rodata.Enemy1) for Enemy1
     spaceinvadersgame.o(.text.Enemy_Init) refers to spaceinvadersgame.o(.rodata.Enemy2) for Enemy2
@@ -36,12 +34,12 @@ Section Cross References
     spaceinvadersgame.o(.text.Move) refers to round.o(i.round) for round
     spaceinvadersgame.o(.text.Move) refers to dfixu.o(x$fpl$dfixu) for __aeabi_d2uiz
     spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.bss.player) for player
+    spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.data.x) for x
     spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.data.count) for count
     spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.bss.Enemy) for Enemy
-    spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.data.enemy_width) for enemy_width
     spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.bss.j) for j
     spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.data.vertical_array) for vertical_array
-    spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.text.Draw) for Draw
+    spaceinvadersgame.o(.text.Move) refers to spaceinvadersgame.o(.bss.FrameCount) for FrameCount
     spaceinvadersgame.o(.ARM.exidx.text.Move) refers to spaceinvadersgame.o(.text.Move) for [Anonymous Symbol]
     spaceinvadersgame.o(.text.Draw) refers to nokia5110.o(.text.Nokia5110_ClearBuffer) for Nokia5110_ClearBuffer
     spaceinvadersgame.o(.text.Draw) refers to spaceinvadersgame.o(.bss.Enemy) for Enemy
@@ -74,7 +72,6 @@ Section Cross References
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.text.SpaceShip_Init) for SpaceShip_Init
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.text.Draw) for Draw
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.bss.Flag) for Flag
-    spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.data.speed_divider) for speed_divider
     spaceinvadersgame.o(.text.main) refers to spaceinvadersgame.o(.text.Move) for Move
     spaceinvadersgame.o(.ARM.exidx.text.main) refers to spaceinvadersgame.o(.text.main) for [Anonymous Symbol]
     nokia5110.o(.text.Nokia5110_Init) refers to nokia5110.o(.text.lcdwrite) for lcdwrite
@@ -384,7 +381,9 @@ Removing Unused input sections from the image.
     Removing spaceinvadersgame.o(.ARM.exidx.text.Randomize), (8 bytes).
     Removing spaceinvadersgame.o(.ARM.exidx.text.main), (8 bytes).
     Removing spaceinvadersgame.o(.bss.TimerCount), (4 bytes).
-    Removing spaceinvadersgame.o(.data.SpaceShip_width), (4 bytes).
+    Removing spaceinvadersgame.o(.rodata.enemy_width), (4 bytes).
+    Removing spaceinvadersgame.o(.rodata.SpaceShip_width), (4 bytes).
+    Removing spaceinvadersgame.o(.rodata.speed_divider), (4 bytes).
     Removing spaceinvadersgame.o(.rodata.Laser0), (163 bytes).
     Removing spaceinvadersgame.o(.rodata.Laser1), (151 bytes).
     Removing spaceinvadersgame.o(.rodata.Explosion), (215 bytes).
@@ -428,7 +427,7 @@ Removing Unused input sections from the image.
     Removing texas.o(i.UART0_OutCharNonBlock), (12 bytes).
     Removing texas.o(i.copy), (18 bytes).
 
-54 unused section(s) (total 2633 bytes) removed from the image.
+56 unused section(s) (total 2641 bytes) removed from the image.
 
 ==============================================================================
 
@@ -592,87 +591,87 @@ Image Symbol Table
     [Anonymous Symbol]                       0x00000464   Section        0  adc.o(.text.ADC0_Init)
     [Anonymous Symbol]                       0x00000574   Section        0  spaceinvadersgame.o(.text.Delay1ms)
     [Anonymous Symbol]                       0x000005a4   Section        0  spaceinvadersgame.o(.text.Draw)
-    [Anonymous Symbol]                       0x0000064c   Section        0  spaceinvadersgame.o(.text.Enemy_Init)
-    [Anonymous Symbol]                       0x000006e0   Section        0  spaceinvadersgame.o(.text.Move)
-    [Anonymous Symbol]                       0x00000874   Section        0  nokia5110.o(.text.Nokia5110_ClearBuffer)
-    [Anonymous Symbol]                       0x000008a4   Section        0  nokia5110.o(.text.Nokia5110_DisplayBuffer)
-    [Anonymous Symbol]                       0x000008b4   Section        0  nokia5110.o(.text.Nokia5110_DrawFullImage)
-    [Anonymous Symbol]                       0x000008f0   Section        0  nokia5110.o(.text.Nokia5110_Init)
-    [Anonymous Symbol]                       0x00000a54   Section        0  nokia5110.o(.text.Nokia5110_PrintBMP)
-    [Anonymous Symbol]                       0x00000c5c   Section        0  nokia5110.o(.text.Nokia5110_SetCursor)
-    [Anonymous Symbol]                       0x00000cac   Section        0  spaceinvadersgame.o(.text.Randomize)
-    [Anonymous Symbol]                       0x00000d4c   Section        0  spaceinvadersgame.o(.text.SpaceShip_Init)
-    [Anonymous Symbol]                       0x00000d70   Section        0  spaceinvadersgame.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x00000db4   Section        0  spaceinvadersgame.o(.text.SysTick_Init)
-    lcdwrite                                 0x00000df9   Thumb Code   144  nokia5110.o(.text.lcdwrite)
-    [Anonymous Symbol]                       0x00000df8   Section        0  nokia5110.o(.text.lcdwrite)
-    [Anonymous Symbol]                       0x00000e88   Section        0  spaceinvadersgame.o(.text.main)
-    i.ADC1_In                                0x00000f28   Section        0  texas.o(i.ADC1_In)
-    i.ADC1_Init                              0x00000f34   Section        0  texas.o(i.ADC1_Init)
-    i.Encrypt                                0x00001008   Section        0  texas.o(i.Encrypt)
-    i.PLL_Init                               0x00001074   Section        0  texas.o(i.PLL_Init)
-    i.SetCode                                0x000010f0   Section        0  texas.o(i.SetCode)
-    i.SetCourse                              0x00001108   Section        0  texas.o(i.SetCourse)
-    i.SetGrade                               0x00001120   Section        0  texas.o(i.SetGrade)
-    i.TExaS_Init                             0x000011ec   Section        0  texas.o(i.TExaS_Init)
-    i.Timer4A_Handler                        0x0000147c   Section        0  texas.o(i.Timer4A_Handler)
-    i.Timer5A_Handler                        0x0000149c   Section        0  texas.o(i.Timer5A_Handler)
-    i.UART0_Init                             0x00001d1c   Section        0  texas.o(i.UART0_Init)
-    i.__ARM_fpclassify                       0x00001ddc   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__kernel_poly                          0x00001e04   Section        0  poly.o(i.__kernel_poly)
-    i.__mathlib_dbl_divzero                  0x00001eb0   Section        0  dunder.o(i.__mathlib_dbl_divzero)
-    i.__mathlib_dbl_infnan2                  0x00001ec0   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
-    i.__mathlib_dbl_invalid                  0x00001ec4   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__mathlib_dbl_overflow                 0x00001ed0   Section        0  dunder.o(i.__mathlib_dbl_overflow)
-    i.__mathlib_dbl_underflow                0x00001ee0   Section        0  dunder.o(i.__mathlib_dbl_underflow)
-    i.checkADCconfiguration                  0x00001ef0   Section        0  texas.o(i.checkADCconfiguration)
-    i.checkDisplayconfiguration              0x00001f98   Section        0  texas.o(i.checkDisplayconfiguration)
-    i.checkLinearity                         0x00002240   Section        0  texas.o(i.checkLinearity)
-    i.pow                                    0x000023e4   Section        0  pow.o(i.pow)
-    i.round                                  0x00002dd0   Section        0  round.o(i.round)
-    i.sqrt                                   0x00002e64   Section        0  sqrt.o(i.sqrt)
-    x$fpl$dadd                               0x00002eb0   Section      336  daddsub_clz.o(x$fpl$dadd)
-    _dadd1                                   0x00002ec1   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    x$fpl$dcheck1                            0x00003000   Section       16  dcheck1.o(x$fpl$dcheck1)
-    x$fpl$dcmpinf                            0x00003010   Section       24  dcmpi.o(x$fpl$dcmpinf)
-    x$fpl$ddiv                               0x00003028   Section      692  ddiv.o(x$fpl$ddiv)
-    ddiv_entry                               0x0000302f   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    x$fpl$dfixu                              0x000032dc   Section       90  dfixu.o(x$fpl$dfixu)
-    x$fpl$dflt                               0x00003336   Section       46  dflt_clz.o(x$fpl$dflt)
-    x$fpl$dfltu                              0x00003364   Section       38  dflt_clz.o(x$fpl$dfltu)
-    x$fpl$dleqf                              0x0000338c   Section      120  dleqf.o(x$fpl$dleqf)
-    x$fpl$dmul                               0x00003404   Section      340  dmul.o(x$fpl$dmul)
-    x$fpl$dnaninf                            0x00003558   Section      156  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x000035f4   Section       12  dretinf.o(x$fpl$dretinf)
-    x$fpl$drleqf                             0x00003600   Section      108  drleqf.o(x$fpl$drleqf)
-    x$fpl$drnd                               0x0000366c   Section      180  drnd.o(x$fpl$drnd)
-    x$fpl$drsb                               0x00003720   Section       22  daddsub_clz.o(x$fpl$drsb)
-    x$fpl$dsqrt                              0x00003738   Section      408  dsqrt_umaal.o(x$fpl$dsqrt)
-    x$fpl$dsub                               0x000038d0   Section      476  daddsub_clz.o(x$fpl$dsub)
-    _dsub1                                   0x000038e1   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    x$fpl$f2d                                0x00003aac   Section       86  f2d.o(x$fpl$f2d)
-    x$fpl$fadd                               0x00003b04   Section      196  faddsub_clz.o(x$fpl$fadd)
-    _fadd1                                   0x00003b13   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
-    _fdiv1                                   0x00003bc9   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    x$fpl$fdiv                               0x00003bc8   Section      388  fdiv.o(x$fpl$fdiv)
-    x$fpl$ffltu                              0x00003d4c   Section       38  fflt_clz.o(x$fpl$ffltu)
-    x$fpl$fmul                               0x00003d74   Section      258  fmul.o(x$fpl$fmul)
-    x$fpl$fnaninf                            0x00003e76   Section      140  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fretinf                            0x00003f02   Section       10  fretinf.o(x$fpl$fretinf)
-    x$fpl$fsub                               0x00003f0c   Section      234  faddsub_clz.o(x$fpl$fsub)
-    _fsub1                                   0x00003f1b   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
-    x$fpl$retnan                             0x00003ff6   Section      100  retnan.o(x$fpl$retnan)
-    x$fpl$scalbn                             0x0000405a   Section       92  scalbn.o(x$fpl$scalbn)
-    x$fpl$trapveneer                         0x000040b6   Section       48  trapv.o(x$fpl$trapveneer)
-    x$fpl$usenofp                            0x000040e6   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x000040e8   Section     7056  texas.o(.constdata)
-    bp                                       0x00005c78   Data          16  pow.o(.constdata)
-    .constdata                               0x00005c78   Section      136  pow.o(.constdata)
-    dp_h                                     0x00005c88   Data          16  pow.o(.constdata)
-    dp_l                                     0x00005c98   Data          16  pow.o(.constdata)
-    L                                        0x00005ca8   Data          48  pow.o(.constdata)
-    P                                        0x00005cd8   Data          40  pow.o(.constdata)
-    .constdata                               0x00005d00   Section        8  qnan.o(.constdata)
+    [Anonymous Symbol]                       0x00000638   Section        0  spaceinvadersgame.o(.text.Enemy_Init)
+    [Anonymous Symbol]                       0x000006c0   Section        0  spaceinvadersgame.o(.text.Move)
+    [Anonymous Symbol]                       0x000008b4   Section        0  nokia5110.o(.text.Nokia5110_ClearBuffer)
+    [Anonymous Symbol]                       0x000008e4   Section        0  nokia5110.o(.text.Nokia5110_DisplayBuffer)
+    [Anonymous Symbol]                       0x000008f4   Section        0  nokia5110.o(.text.Nokia5110_DrawFullImage)
+    [Anonymous Symbol]                       0x00000930   Section        0  nokia5110.o(.text.Nokia5110_Init)
+    [Anonymous Symbol]                       0x00000a94   Section        0  nokia5110.o(.text.Nokia5110_PrintBMP)
+    [Anonymous Symbol]                       0x00000c9c   Section        0  nokia5110.o(.text.Nokia5110_SetCursor)
+    [Anonymous Symbol]                       0x00000cec   Section        0  spaceinvadersgame.o(.text.Randomize)
+    [Anonymous Symbol]                       0x00000d8c   Section        0  spaceinvadersgame.o(.text.SpaceShip_Init)
+    [Anonymous Symbol]                       0x00000db0   Section        0  spaceinvadersgame.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x00000dc0   Section        0  spaceinvadersgame.o(.text.SysTick_Init)
+    lcdwrite                                 0x00000e05   Thumb Code   144  nokia5110.o(.text.lcdwrite)
+    [Anonymous Symbol]                       0x00000e04   Section        0  nokia5110.o(.text.lcdwrite)
+    [Anonymous Symbol]                       0x00000e94   Section        0  spaceinvadersgame.o(.text.main)
+    i.ADC1_In                                0x00000f2c   Section        0  texas.o(i.ADC1_In)
+    i.ADC1_Init                              0x00000f38   Section        0  texas.o(i.ADC1_Init)
+    i.Encrypt                                0x0000100c   Section        0  texas.o(i.Encrypt)
+    i.PLL_Init                               0x00001078   Section        0  texas.o(i.PLL_Init)
+    i.SetCode                                0x000010f4   Section        0  texas.o(i.SetCode)
+    i.SetCourse                              0x0000110c   Section        0  texas.o(i.SetCourse)
+    i.SetGrade                               0x00001124   Section        0  texas.o(i.SetGrade)
+    i.TExaS_Init                             0x000011f0   Section        0  texas.o(i.TExaS_Init)
+    i.Timer4A_Handler                        0x00001480   Section        0  texas.o(i.Timer4A_Handler)
+    i.Timer5A_Handler                        0x000014a0   Section        0  texas.o(i.Timer5A_Handler)
+    i.UART0_Init                             0x00001d20   Section        0  texas.o(i.UART0_Init)
+    i.__ARM_fpclassify                       0x00001de0   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__kernel_poly                          0x00001e08   Section        0  poly.o(i.__kernel_poly)
+    i.__mathlib_dbl_divzero                  0x00001eb4   Section        0  dunder.o(i.__mathlib_dbl_divzero)
+    i.__mathlib_dbl_infnan2                  0x00001ec4   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
+    i.__mathlib_dbl_invalid                  0x00001ec8   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__mathlib_dbl_overflow                 0x00001ed4   Section        0  dunder.o(i.__mathlib_dbl_overflow)
+    i.__mathlib_dbl_underflow                0x00001ee4   Section        0  dunder.o(i.__mathlib_dbl_underflow)
+    i.checkADCconfiguration                  0x00001ef4   Section        0  texas.o(i.checkADCconfiguration)
+    i.checkDisplayconfiguration              0x00001f9c   Section        0  texas.o(i.checkDisplayconfiguration)
+    i.checkLinearity                         0x00002244   Section        0  texas.o(i.checkLinearity)
+    i.pow                                    0x000023e8   Section        0  pow.o(i.pow)
+    i.round                                  0x00002dd4   Section        0  round.o(i.round)
+    i.sqrt                                   0x00002e68   Section        0  sqrt.o(i.sqrt)
+    x$fpl$dadd                               0x00002eb4   Section      336  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x00002ec5   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$dcheck1                            0x00003004   Section       16  dcheck1.o(x$fpl$dcheck1)
+    x$fpl$dcmpinf                            0x00003014   Section       24  dcmpi.o(x$fpl$dcmpinf)
+    x$fpl$ddiv                               0x0000302c   Section      692  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x00003033   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    x$fpl$dfixu                              0x000032e0   Section       90  dfixu.o(x$fpl$dfixu)
+    x$fpl$dflt                               0x0000333a   Section       46  dflt_clz.o(x$fpl$dflt)
+    x$fpl$dfltu                              0x00003368   Section       38  dflt_clz.o(x$fpl$dfltu)
+    x$fpl$dleqf                              0x00003390   Section      120  dleqf.o(x$fpl$dleqf)
+    x$fpl$dmul                               0x00003408   Section      340  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x0000355c   Section      156  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x000035f8   Section       12  dretinf.o(x$fpl$dretinf)
+    x$fpl$drleqf                             0x00003604   Section      108  drleqf.o(x$fpl$drleqf)
+    x$fpl$drnd                               0x00003670   Section      180  drnd.o(x$fpl$drnd)
+    x$fpl$drsb                               0x00003724   Section       22  daddsub_clz.o(x$fpl$drsb)
+    x$fpl$dsqrt                              0x0000373c   Section      408  dsqrt_umaal.o(x$fpl$dsqrt)
+    x$fpl$dsub                               0x000038d4   Section      476  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x000038e5   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$f2d                                0x00003ab0   Section       86  f2d.o(x$fpl$f2d)
+    x$fpl$fadd                               0x00003b08   Section      196  faddsub_clz.o(x$fpl$fadd)
+    _fadd1                                   0x00003b17   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
+    _fdiv1                                   0x00003bcd   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    x$fpl$fdiv                               0x00003bcc   Section      388  fdiv.o(x$fpl$fdiv)
+    x$fpl$ffltu                              0x00003d50   Section       38  fflt_clz.o(x$fpl$ffltu)
+    x$fpl$fmul                               0x00003d78   Section      258  fmul.o(x$fpl$fmul)
+    x$fpl$fnaninf                            0x00003e7a   Section      140  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fretinf                            0x00003f06   Section       10  fretinf.o(x$fpl$fretinf)
+    x$fpl$fsub                               0x00003f10   Section      234  faddsub_clz.o(x$fpl$fsub)
+    _fsub1                                   0x00003f1f   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
+    x$fpl$retnan                             0x00003ffa   Section      100  retnan.o(x$fpl$retnan)
+    x$fpl$scalbn                             0x0000405e   Section       92  scalbn.o(x$fpl$scalbn)
+    x$fpl$trapveneer                         0x000040ba   Section       48  trapv.o(x$fpl$trapveneer)
+    x$fpl$usenofp                            0x000040ea   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x000040ec   Section     7056  texas.o(.constdata)
+    bp                                       0x00005c80   Data          16  pow.o(.constdata)
+    .constdata                               0x00005c80   Section      136  pow.o(.constdata)
+    dp_h                                     0x00005c90   Data          16  pow.o(.constdata)
+    dp_l                                     0x00005ca0   Data          16  pow.o(.constdata)
+    L                                        0x00005cb0   Data          48  pow.o(.constdata)
+    P                                        0x00005ce0   Data          40  pow.o(.constdata)
+    .constdata                               0x00005d08   Section        8  qnan.o(.constdata)
     .data                                    0x20000000   Section      112  texas.o(.data)
     RealGrade                                0x20000010   Data           4  texas.o(.data)
     adc300                                   0x20000014   Data           4  texas.o(.data)
@@ -685,12 +684,12 @@ Image Symbol Table
     dist700                                  0x20000030   Data           4  texas.o(.data)
     dist900                                  0x20000034   Data           4  texas.o(.data)
     dist1100                                 0x20000038   Data           4  texas.o(.data)
-    .bss                                     0x20000090   Section      628  texas.o(.bss)
-    .bss                                     0x20000304   Section       96  libspace.o(.bss)
-    HeapMem                                  0x200005e8   Data           0  startup.o(HEAP)
-    StackMem                                 0x200005e8   Data           0  startup.o(STACK)
-    HEAP                                     0x200005e8   Section        0  startup.o(HEAP)
-    STACK                                    0x200005e8   Section     1024  startup.o(STACK)
+    .bss                                     0x20000088   Section      628  texas.o(.bss)
+    .bss                                     0x200002fc   Section       96  libspace.o(.bss)
+    HeapMem                                  0x200005e0   Data           0  startup.o(HEAP)
+    StackMem                                 0x200005e0   Data           0  startup.o(STACK)
+    HEAP                                     0x200005e0   Section        0  startup.o(HEAP)
+    STACK                                    0x200005e0   Section     1024  startup.o(STACK)
 
     Global Symbols
 
@@ -925,132 +924,132 @@ Image Symbol Table
     ADC0_In                                  0x00000415   Thumb Code    78  adc.o(.text.ADC0_In)
     ADC0_Init                                0x00000465   Thumb Code   272  adc.o(.text.ADC0_Init)
     Delay1ms                                 0x00000575   Thumb Code    46  spaceinvadersgame.o(.text.Delay1ms)
-    Draw                                     0x000005a5   Thumb Code   166  spaceinvadersgame.o(.text.Draw)
-    Enemy_Init                               0x0000064d   Thumb Code   146  spaceinvadersgame.o(.text.Enemy_Init)
-    Move                                     0x000006e1   Thumb Code   404  spaceinvadersgame.o(.text.Move)
-    Nokia5110_ClearBuffer                    0x00000875   Thumb Code    46  nokia5110.o(.text.Nokia5110_ClearBuffer)
-    Nokia5110_DisplayBuffer                  0x000008a5   Thumb Code    16  nokia5110.o(.text.Nokia5110_DisplayBuffer)
-    Nokia5110_DrawFullImage                  0x000008b5   Thumb Code    58  nokia5110.o(.text.Nokia5110_DrawFullImage)
-    Nokia5110_Init                           0x000008f1   Thumb Code   354  nokia5110.o(.text.Nokia5110_Init)
-    Nokia5110_PrintBMP                       0x00000a55   Thumb Code   518  nokia5110.o(.text.Nokia5110_PrintBMP)
-    Nokia5110_SetCursor                      0x00000c5d   Thumb Code    78  nokia5110.o(.text.Nokia5110_SetCursor)
-    Randomize                                0x00000cad   Thumb Code   160  spaceinvadersgame.o(.text.Randomize)
-    SpaceShip_Init                           0x00000d4d   Thumb Code    36  spaceinvadersgame.o(.text.SpaceShip_Init)
-    SysTick_Handler                          0x00000d71   Thumb Code    68  spaceinvadersgame.o(.text.SysTick_Handler)
-    SysTick_Init                             0x00000db5   Thumb Code    66  spaceinvadersgame.o(.text.SysTick_Init)
-    main                                     0x00000e89   Thumb Code   158  spaceinvadersgame.o(.text.main)
-    ADC1_In                                  0x00000f29   Thumb Code     6  texas.o(i.ADC1_In)
-    ADC1_Init                                0x00000f35   Thumb Code   174  texas.o(i.ADC1_Init)
-    Encrypt                                  0x00001009   Thumb Code    92  texas.o(i.Encrypt)
-    PLL_Init                                 0x00001075   Thumb Code   118  texas.o(i.PLL_Init)
-    SetCode                                  0x000010f1   Thumb Code    20  texas.o(i.SetCode)
-    SetCourse                                0x00001109   Thumb Code    20  texas.o(i.SetCourse)
-    SetGrade                                 0x00001121   Thumb Code   196  texas.o(i.SetGrade)
-    TExaS_Init                               0x000011ed   Thumb Code   480  texas.o(i.TExaS_Init)
-    Timer4A_Handler                          0x0000147d   Thumb Code    20  texas.o(i.Timer4A_Handler)
-    Timer5A_Handler                          0x0000149d   Thumb Code  2132  texas.o(i.Timer5A_Handler)
-    UART0_Init                               0x00001d1d   Thumb Code   160  texas.o(i.UART0_Init)
-    __ARM_fpclassify                         0x00001ddd   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
-    __kernel_poly                            0x00001e05   Thumb Code   170  poly.o(i.__kernel_poly)
-    __mathlib_dbl_divzero                    0x00001eb1   Thumb Code    12  dunder.o(i.__mathlib_dbl_divzero)
-    __mathlib_dbl_infnan2                    0x00001ec1   Thumb Code     4  dunder.o(i.__mathlib_dbl_infnan2)
-    __mathlib_dbl_invalid                    0x00001ec5   Thumb Code    12  dunder.o(i.__mathlib_dbl_invalid)
-    __mathlib_dbl_overflow                   0x00001ed1   Thumb Code    14  dunder.o(i.__mathlib_dbl_overflow)
-    __mathlib_dbl_underflow                  0x00001ee1   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
-    checkADCconfiguration                    0x00001ef1   Thumb Code   150  texas.o(i.checkADCconfiguration)
-    checkDisplayconfiguration                0x00001f99   Thumb Code   636  texas.o(i.checkDisplayconfiguration)
-    checkLinearity                           0x00002241   Thumb Code   416  texas.o(i.checkLinearity)
-    pow                                      0x000023e5   Thumb Code  2532  pow.o(i.pow)
-    round                                    0x00002dd1   Thumb Code   136  round.o(i.round)
-    sqrt                                     0x00002e65   Thumb Code    76  sqrt.o(i.sqrt)
-    __aeabi_dadd                             0x00002eb1   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    _dadd                                    0x00002eb1   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
-    __fpl_dcheck_NaN1                        0x00003001   Thumb Code    10  dcheck1.o(x$fpl$dcheck1)
-    __fpl_dcmp_Inf                           0x00003011   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
-    __aeabi_ddiv                             0x00003029   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    _ddiv                                    0x00003029   Thumb Code   556  ddiv.o(x$fpl$ddiv)
-    __aeabi_d2uiz                            0x000032dd   Thumb Code     0  dfixu.o(x$fpl$dfixu)
-    _dfixu                                   0x000032dd   Thumb Code    90  dfixu.o(x$fpl$dfixu)
-    __aeabi_i2d                              0x00003337   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
-    _dflt                                    0x00003337   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
-    __aeabi_ui2d                             0x00003365   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
-    _dfltu                                   0x00003365   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
-    __aeabi_cdcmple                          0x0000338d   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    _dcmple                                  0x0000338d   Thumb Code   120  dleqf.o(x$fpl$dleqf)
-    __fpl_dcmple_InfNaN                      0x000033ef   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    __aeabi_dmul                             0x00003405   Thumb Code     0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x00003405   Thumb Code   332  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x00003559   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x000035f5   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_cdrcmple                         0x00003601   Thumb Code     0  drleqf.o(x$fpl$drleqf)
-    _drcmple                                 0x00003601   Thumb Code   108  drleqf.o(x$fpl$drleqf)
-    _drnd                                    0x0000366d   Thumb Code   180  drnd.o(x$fpl$drnd)
-    __aeabi_drsub                            0x00003721   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
-    _drsb                                    0x00003721   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
-    _dsqrt                                   0x00003739   Thumb Code   404  dsqrt_umaal.o(x$fpl$dsqrt)
-    __aeabi_dsub                             0x000038d1   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    _dsub                                    0x000038d1   Thumb Code   472  daddsub_clz.o(x$fpl$dsub)
-    __aeabi_f2d                              0x00003aad   Thumb Code     0  f2d.o(x$fpl$f2d)
-    _f2d                                     0x00003aad   Thumb Code    86  f2d.o(x$fpl$f2d)
-    __aeabi_fadd                             0x00003b05   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
-    _fadd                                    0x00003b05   Thumb Code   196  faddsub_clz.o(x$fpl$fadd)
-    __aeabi_fdiv                             0x00003bc9   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    _fdiv                                    0x00003bc9   Thumb Code   384  fdiv.o(x$fpl$fdiv)
-    __aeabi_ui2f                             0x00003d4d   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
-    _ffltu                                   0x00003d4d   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
-    __aeabi_fmul                             0x00003d75   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x00003d75   Thumb Code   258  fmul.o(x$fpl$fmul)
-    __fpl_fnaninf                            0x00003e77   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    __fpl_fretinf                            0x00003f03   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    __aeabi_fsub                             0x00003f0d   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
-    _fsub                                    0x00003f0d   Thumb Code   234  faddsub_clz.o(x$fpl$fsub)
-    __fpl_return_NaN                         0x00003ff7   Thumb Code   100  retnan.o(x$fpl$retnan)
-    __ARM_scalbn                             0x0000405b   Thumb Code    92  scalbn.o(x$fpl$scalbn)
-    __fpl_cmpreturn                          0x000040b7   Thumb Code    48  trapv.o(x$fpl$trapveneer)
-    __I$use$fp                               0x000040e6   Number         0  usenofp.o(x$fpl$usenofp)
-    Port                                     0x000040e8   Data          24  texas.o(.constdata)
-    InputPortMsgE2                           0x00004100   Data          40  texas.o(.constdata)
-    InputPortMsgE3                           0x00004128   Data          40  texas.o(.constdata)
-    InputPortMsgE5                           0x00004150   Data          40  texas.o(.constdata)
-    OutputPortMsg0                           0x00004178   Data          40  texas.o(.constdata)
-    OutputPortMsg1                           0x000041a0   Data          40  texas.o(.constdata)
-    OutputPortMsg2                           0x000041c8   Data          40  texas.o(.constdata)
-    OutputPortMsg3                           0x000041f0   Data          40  texas.o(.constdata)
-    BlankMsg                                 0x00004218   Data          40  texas.o(.constdata)
-    InitializedMsg                           0x00004240   Data          40  texas.o(.constdata)
-    IntroMsg                                 0x00004268   Data          40  texas.o(.constdata)
-    DoneMsg                                  0x00004290   Data          40  texas.o(.constdata)
-    TestMsg                                  0x000042b8   Data          40  texas.o(.constdata)
-    LabTest                                  0x000042e0   Data        5428  texas.o(.constdata)
-    BgTest                                   0x00005814   Data         160  texas.o(.constdata)
-    ADCconfigSuccessMsg                      0x000058b4   Data          25  texas.o(.constdata)
-    ADCconfigErrorMsg                        0x000058cd   Data          29  texas.o(.constdata)
-    ADCconfigNotUsingS3Msg                   0x000058ea   Data          34  texas.o(.constdata)
-    ADCconfigBadTriggerMsg                   0x0000590c   Data          35  texas.o(.constdata)
-    ADCconfigBadChannelMsg                   0x0000592f   Data          35  texas.o(.constdata)
-    ADCconfigTemperatureMsg                  0x00005952   Data          35  texas.o(.constdata)
-    ADCconfigSIENotUsedMsg                   0x00005975   Data          33  texas.o(.constdata)
-    ADCconfigEndNotUsedMsg                   0x00005996   Data          33  texas.o(.constdata)
-    ADCconfigDifferentialMsg                 0x000059b7   Data          36  texas.o(.constdata)
-    DisplaySuccessMsg                        0x000059db   Data          32  texas.o(.constdata)
-    DisplayErrorMsg                          0x000059fb   Data          35  texas.o(.constdata)
-    DisplayClockOffMsg                       0x00005a1e   Data          34  texas.o(.constdata)
-    DisplayUART0WrongMsg                     0x00005a40   Data          33  texas.o(.constdata)
-    DisplayPortAWrongMsg                     0x00005a61   Data          33  texas.o(.constdata)
-    DisplaySSI0WrongMsg                      0x00005a82   Data          32  texas.o(.constdata)
-    Linearity90Msg                           0x00005aa2   Data          35  texas.o(.constdata)
-    LinearityErrorMsg                        0x00005ac5   Data          30  texas.o(.constdata)
-    LinearityOutMsg                          0x00005ae3   Data         330  texas.o(.constdata)
-    Key                                      0x00005c2d   Data           8  texas.o(.constdata)
-    Scramble                                 0x00005c38   Data          32  texas.o(.constdata)
-    DeScramble                               0x00005c58   Data          32  texas.o(.constdata)
-    __mathlib_zero                           0x00005d00   Data           8  qnan.o(.constdata)
-    Enemy1                                   0x00005d08   Data         151  spaceinvadersgame.o(.rodata.Enemy1)
-    Enemy2                                   0x00005d9f   Data         151  spaceinvadersgame.o(.rodata.Enemy2)
-    SpaceShip                                0x00005e36   Data         239  spaceinvadersgame.o(.rodata.SpaceShip)
-    image                                    0x00005f25   Data        2231  spaceinvadersgame.o(.rodata.image)
-    Region$$Table$$Base                      0x000067dc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000067fc   Number         0  anon$$obj.o(Region$$Table)
+    Draw                                     0x000005a5   Thumb Code   148  spaceinvadersgame.o(.text.Draw)
+    Enemy_Init                               0x00000639   Thumb Code   136  spaceinvadersgame.o(.text.Enemy_Init)
+    Move                                     0x000006c1   Thumb Code   500  spaceinvadersgame.o(.text.Move)
+    Nokia5110_ClearBuffer                    0x000008b5   Thumb Code    46  nokia5110.o(.text.Nokia5110_ClearBuffer)
+    Nokia5110_DisplayBuffer                  0x000008e5   Thumb Code    16  nokia5110.o(.text.Nokia5110_DisplayBuffer)
+    Nokia5110_DrawFullImage                  0x000008f5   Thumb Code    58  nokia5110.o(.text.Nokia5110_DrawFullImage)
+    Nokia5110_Init                           0x00000931   Thumb Code   354  nokia5110.o(.text.Nokia5110_Init)
+    Nokia5110_PrintBMP                       0x00000a95   Thumb Code   518  nokia5110.o(.text.Nokia5110_PrintBMP)
+    Nokia5110_SetCursor                      0x00000c9d   Thumb Code    78  nokia5110.o(.text.Nokia5110_SetCursor)
+    Randomize                                0x00000ced   Thumb Code   160  spaceinvadersgame.o(.text.Randomize)
+    SpaceShip_Init                           0x00000d8d   Thumb Code    36  spaceinvadersgame.o(.text.SpaceShip_Init)
+    SysTick_Handler                          0x00000db1   Thumb Code    14  spaceinvadersgame.o(.text.SysTick_Handler)
+    SysTick_Init                             0x00000dc1   Thumb Code    66  spaceinvadersgame.o(.text.SysTick_Init)
+    main                                     0x00000e95   Thumb Code   150  spaceinvadersgame.o(.text.main)
+    ADC1_In                                  0x00000f2d   Thumb Code     6  texas.o(i.ADC1_In)
+    ADC1_Init                                0x00000f39   Thumb Code   174  texas.o(i.ADC1_Init)
+    Encrypt                                  0x0000100d   Thumb Code    92  texas.o(i.Encrypt)
+    PLL_Init                                 0x00001079   Thumb Code   118  texas.o(i.PLL_Init)
+    SetCode                                  0x000010f5   Thumb Code    20  texas.o(i.SetCode)
+    SetCourse                                0x0000110d   Thumb Code    20  texas.o(i.SetCourse)
+    SetGrade                                 0x00001125   Thumb Code   196  texas.o(i.SetGrade)
+    TExaS_Init                               0x000011f1   Thumb Code   480  texas.o(i.TExaS_Init)
+    Timer4A_Handler                          0x00001481   Thumb Code    20  texas.o(i.Timer4A_Handler)
+    Timer5A_Handler                          0x000014a1   Thumb Code  2132  texas.o(i.Timer5A_Handler)
+    UART0_Init                               0x00001d21   Thumb Code   160  texas.o(i.UART0_Init)
+    __ARM_fpclassify                         0x00001de1   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
+    __kernel_poly                            0x00001e09   Thumb Code   170  poly.o(i.__kernel_poly)
+    __mathlib_dbl_divzero                    0x00001eb5   Thumb Code    12  dunder.o(i.__mathlib_dbl_divzero)
+    __mathlib_dbl_infnan2                    0x00001ec5   Thumb Code     4  dunder.o(i.__mathlib_dbl_infnan2)
+    __mathlib_dbl_invalid                    0x00001ec9   Thumb Code    12  dunder.o(i.__mathlib_dbl_invalid)
+    __mathlib_dbl_overflow                   0x00001ed5   Thumb Code    14  dunder.o(i.__mathlib_dbl_overflow)
+    __mathlib_dbl_underflow                  0x00001ee5   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
+    checkADCconfiguration                    0x00001ef5   Thumb Code   150  texas.o(i.checkADCconfiguration)
+    checkDisplayconfiguration                0x00001f9d   Thumb Code   636  texas.o(i.checkDisplayconfiguration)
+    checkLinearity                           0x00002245   Thumb Code   416  texas.o(i.checkLinearity)
+    pow                                      0x000023e9   Thumb Code  2532  pow.o(i.pow)
+    round                                    0x00002dd5   Thumb Code   136  round.o(i.round)
+    sqrt                                     0x00002e69   Thumb Code    76  sqrt.o(i.sqrt)
+    __aeabi_dadd                             0x00002eb5   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x00002eb5   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __fpl_dcheck_NaN1                        0x00003005   Thumb Code    10  dcheck1.o(x$fpl$dcheck1)
+    __fpl_dcmp_Inf                           0x00003015   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
+    __aeabi_ddiv                             0x0000302d   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x0000302d   Thumb Code   556  ddiv.o(x$fpl$ddiv)
+    __aeabi_d2uiz                            0x000032e1   Thumb Code     0  dfixu.o(x$fpl$dfixu)
+    _dfixu                                   0x000032e1   Thumb Code    90  dfixu.o(x$fpl$dfixu)
+    __aeabi_i2d                              0x0000333b   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
+    _dflt                                    0x0000333b   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
+    __aeabi_ui2d                             0x00003369   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
+    _dfltu                                   0x00003369   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
+    __aeabi_cdcmple                          0x00003391   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    _dcmple                                  0x00003391   Thumb Code   120  dleqf.o(x$fpl$dleqf)
+    __fpl_dcmple_InfNaN                      0x000033f3   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    __aeabi_dmul                             0x00003409   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x00003409   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x0000355d   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x000035f9   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_cdrcmple                         0x00003605   Thumb Code     0  drleqf.o(x$fpl$drleqf)
+    _drcmple                                 0x00003605   Thumb Code   108  drleqf.o(x$fpl$drleqf)
+    _drnd                                    0x00003671   Thumb Code   180  drnd.o(x$fpl$drnd)
+    __aeabi_drsub                            0x00003725   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
+    _drsb                                    0x00003725   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
+    _dsqrt                                   0x0000373d   Thumb Code   404  dsqrt_umaal.o(x$fpl$dsqrt)
+    __aeabi_dsub                             0x000038d5   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x000038d5   Thumb Code   472  daddsub_clz.o(x$fpl$dsub)
+    __aeabi_f2d                              0x00003ab1   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x00003ab1   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __aeabi_fadd                             0x00003b09   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
+    _fadd                                    0x00003b09   Thumb Code   196  faddsub_clz.o(x$fpl$fadd)
+    __aeabi_fdiv                             0x00003bcd   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    _fdiv                                    0x00003bcd   Thumb Code   384  fdiv.o(x$fpl$fdiv)
+    __aeabi_ui2f                             0x00003d51   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
+    _ffltu                                   0x00003d51   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
+    __aeabi_fmul                             0x00003d79   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x00003d79   Thumb Code   258  fmul.o(x$fpl$fmul)
+    __fpl_fnaninf                            0x00003e7b   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    __fpl_fretinf                            0x00003f07   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    __aeabi_fsub                             0x00003f11   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
+    _fsub                                    0x00003f11   Thumb Code   234  faddsub_clz.o(x$fpl$fsub)
+    __fpl_return_NaN                         0x00003ffb   Thumb Code   100  retnan.o(x$fpl$retnan)
+    __ARM_scalbn                             0x0000405f   Thumb Code    92  scalbn.o(x$fpl$scalbn)
+    __fpl_cmpreturn                          0x000040bb   Thumb Code    48  trapv.o(x$fpl$trapveneer)
+    __I$use$fp                               0x000040ea   Number         0  usenofp.o(x$fpl$usenofp)
+    Port                                     0x000040ec   Data          24  texas.o(.constdata)
+    InputPortMsgE2                           0x00004104   Data          40  texas.o(.constdata)
+    InputPortMsgE3                           0x0000412c   Data          40  texas.o(.constdata)
+    InputPortMsgE5                           0x00004154   Data          40  texas.o(.constdata)
+    OutputPortMsg0                           0x0000417c   Data          40  texas.o(.constdata)
+    OutputPortMsg1                           0x000041a4   Data          40  texas.o(.constdata)
+    OutputPortMsg2                           0x000041cc   Data          40  texas.o(.constdata)
+    OutputPortMsg3                           0x000041f4   Data          40  texas.o(.constdata)
+    BlankMsg                                 0x0000421c   Data          40  texas.o(.constdata)
+    InitializedMsg                           0x00004244   Data          40  texas.o(.constdata)
+    IntroMsg                                 0x0000426c   Data          40  texas.o(.constdata)
+    DoneMsg                                  0x00004294   Data          40  texas.o(.constdata)
+    TestMsg                                  0x000042bc   Data          40  texas.o(.constdata)
+    LabTest                                  0x000042e4   Data        5428  texas.o(.constdata)
+    BgTest                                   0x00005818   Data         160  texas.o(.constdata)
+    ADCconfigSuccessMsg                      0x000058b8   Data          25  texas.o(.constdata)
+    ADCconfigErrorMsg                        0x000058d1   Data          29  texas.o(.constdata)
+    ADCconfigNotUsingS3Msg                   0x000058ee   Data          34  texas.o(.constdata)
+    ADCconfigBadTriggerMsg                   0x00005910   Data          35  texas.o(.constdata)
+    ADCconfigBadChannelMsg                   0x00005933   Data          35  texas.o(.constdata)
+    ADCconfigTemperatureMsg                  0x00005956   Data          35  texas.o(.constdata)
+    ADCconfigSIENotUsedMsg                   0x00005979   Data          33  texas.o(.constdata)
+    ADCconfigEndNotUsedMsg                   0x0000599a   Data          33  texas.o(.constdata)
+    ADCconfigDifferentialMsg                 0x000059bb   Data          36  texas.o(.constdata)
+    DisplaySuccessMsg                        0x000059df   Data          32  texas.o(.constdata)
+    DisplayErrorMsg                          0x000059ff   Data          35  texas.o(.constdata)
+    DisplayClockOffMsg                       0x00005a22   Data          34  texas.o(.constdata)
+    DisplayUART0WrongMsg                     0x00005a44   Data          33  texas.o(.constdata)
+    DisplayPortAWrongMsg                     0x00005a65   Data          33  texas.o(.constdata)
+    DisplaySSI0WrongMsg                      0x00005a86   Data          32  texas.o(.constdata)
+    Linearity90Msg                           0x00005aa6   Data          35  texas.o(.constdata)
+    LinearityErrorMsg                        0x00005ac9   Data          30  texas.o(.constdata)
+    LinearityOutMsg                          0x00005ae7   Data         330  texas.o(.constdata)
+    Key                                      0x00005c31   Data           8  texas.o(.constdata)
+    Scramble                                 0x00005c3c   Data          32  texas.o(.constdata)
+    DeScramble                               0x00005c5c   Data          32  texas.o(.constdata)
+    __mathlib_zero                           0x00005d08   Data           8  qnan.o(.constdata)
+    Enemy1                                   0x00005d10   Data         151  spaceinvadersgame.o(.rodata.Enemy1)
+    Enemy2                                   0x00005da7   Data         151  spaceinvadersgame.o(.rodata.Enemy2)
+    SpaceShip                                0x00005e3e   Data         239  spaceinvadersgame.o(.rodata.SpaceShip)
+    image                                    0x00005f2d   Data        2231  spaceinvadersgame.o(.rodata.image)
+    Region$$Table$$Base                      0x000067e4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00006804   Number         0  anon$$obj.o(Region$$Table)
     InPort                                   0x20000000   Data           4  texas.o(.data)
     OutPort                                  0x20000004   Data           4  texas.o(.data)
     BgTestStatus                             0x20000008   Data           1  texas.o(.data)
@@ -1068,23 +1067,22 @@ Image Symbol Table
     ScopeCount                               0x20000068   Data           4  texas.o(.data)
     r2                                       0x2000006c   Data           4  texas.o(.data)
     count                                    0x20000070   Data           4  spaceinvadersgame.o(.data.count)
-    enemy_width                              0x20000074   Data           4  spaceinvadersgame.o(.data.enemy_width)
-    speed_divider                            0x20000078   Data           4  spaceinvadersgame.o(.data.speed_divider)
-    vertical_array                           0x2000007c   Data          16  spaceinvadersgame.o(.data.vertical_array)
-    TExaS                                    0x20000090   Data          56  texas.o(.bss)
-    TExaS_ADC                                0x200000c8   Data         512  texas.o(.bss)
-    MagicCode                                0x200002c8   Data          10  texas.o(.bss)
-    EncriptedMagicCode                       0x200002d2   Data          10  texas.o(.bss)
-    StudentID                                0x200002dc   Data          40  texas.o(.bss)
-    __libspace_start                         0x20000304   Data          96  libspace.o(.bss)
-    Distance                                 0x20000364   Data           4  spaceinvadersgame.o(.bss.Distance)
-    __temporary_stack_top$libspace           0x20000364   Data           0  libspace.o(.bss)
-    Enemy                                    0x20000368   Data         100  spaceinvadersgame.o(.bss.Enemy)
-    Flag                                     0x200003cc   Data           4  spaceinvadersgame.o(.bss.Flag)
-    FrameCount                               0x200003d0   Data           4  spaceinvadersgame.o(.bss.FrameCount)
-    Screen                                   0x200003d4   Data         504  nokia5110.o(.bss.Screen)
-    j                                        0x200005cc   Data           4  spaceinvadersgame.o(.bss.j)
-    player                                   0x200005d0   Data          20  spaceinvadersgame.o(.bss.player)
+    vertical_array                           0x20000074   Data          16  spaceinvadersgame.o(.data.vertical_array)
+    x                                        0x20000084   Data           4  spaceinvadersgame.o(.data.x)
+    TExaS                                    0x20000088   Data          56  texas.o(.bss)
+    TExaS_ADC                                0x200000c0   Data         512  texas.o(.bss)
+    MagicCode                                0x200002c0   Data          10  texas.o(.bss)
+    EncriptedMagicCode                       0x200002ca   Data          10  texas.o(.bss)
+    StudentID                                0x200002d4   Data          40  texas.o(.bss)
+    __libspace_start                         0x200002fc   Data          96  libspace.o(.bss)
+    Distance                                 0x2000035c   Data           4  spaceinvadersgame.o(.bss.Distance)
+    __temporary_stack_top$libspace           0x2000035c   Data           0  libspace.o(.bss)
+    Enemy                                    0x20000360   Data         100  spaceinvadersgame.o(.bss.Enemy)
+    Flag                                     0x200003c4   Data           4  spaceinvadersgame.o(.bss.Flag)
+    FrameCount                               0x200003c8   Data           4  spaceinvadersgame.o(.bss.FrameCount)
+    Screen                                   0x200003cc   Data         504  nokia5110.o(.bss.Screen)
+    j                                        0x200005c4   Data           4  spaceinvadersgame.o(.bss.j)
+    player                                   0x200005c8   Data          20  spaceinvadersgame.o(.bss.player)
 
 
 
@@ -1094,199 +1092,198 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00006888, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x0000688c, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000067fc, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00006804, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
-    0x00000284   0x00000284   0x00000008   Code   RO          274  * !!!main             c_w.l(__main.o)
-    0x0000028c   0x0000028c   0x0000005c   Code   RO          545    !!!scatter          c_w.l(__scatter.o)
-    0x000002e8   0x000002e8   0x0000001a   Code   RO          549    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000284   0x00000284   0x00000008   Code   RO          275  * !!!main             c_w.l(__main.o)
+    0x0000028c   0x0000028c   0x0000005c   Code   RO          546    !!!scatter          c_w.l(__scatter.o)
+    0x000002e8   0x000002e8   0x0000001a   Code   RO          550    !!handler_copy      c_w.l(__scatter_copy.o)
     0x00000302   0x00000302   0x00000002   PAD
-    0x00000304   0x00000304   0x00000002   Code   RO          546    !!handler_null      c_w.l(__scatter.o)
+    0x00000304   0x00000304   0x00000002   Code   RO          547    !!handler_null      c_w.l(__scatter.o)
     0x00000306   0x00000306   0x00000002   PAD
-    0x00000308   0x00000308   0x0000001c   Code   RO          551    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x00000324   0x00000324   0x00000002   Code   RO          406    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          412    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          414    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          416    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          419    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          421    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          423    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          426    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          428    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          430    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          432    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          434    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          436    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          438    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          440    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          442    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          444    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          446    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          450    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          452    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          454    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000000   Code   RO          456    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
-    0x00000326   0x00000326   0x00000002   Code   RO          457    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
-    0x00000328   0x00000328   0x00000002   Code   RO          481    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x0000032a   0x0000032a   0x00000000   Code   RO          496    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x0000032a   0x0000032a   0x00000000   Code   RO          498    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x0000032a   0x0000032a   0x00000000   Code   RO          501    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x0000032a   0x0000032a   0x00000000   Code   RO          504    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x0000032a   0x0000032a   0x00000000   Code   RO          506    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x0000032a   0x0000032a   0x00000000   Code   RO          509    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x0000032a   0x0000032a   0x00000002   Code   RO          510    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x0000032c   0x0000032c   0x00000000   Code   RO          319    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x0000032c   0x0000032c   0x00000000   Code   RO          369    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x0000032c   0x0000032c   0x00000006   Code   RO          381    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x00000332   0x00000332   0x00000000   Code   RO          371    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x00000332   0x00000332   0x00000004   Code   RO          372    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x00000336   0x00000336   0x00000000   Code   RO          374    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x00000336   0x00000336   0x00000008   Code   RO          375    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0000033e   0x0000033e   0x00000002   Code   RO          409    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x00000340   0x00000340   0x00000000   Code   RO          461    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x00000340   0x00000340   0x00000004   Code   RO          462    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000344   0x00000344   0x00000006   Code   RO          463    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x00000308   0x00000308   0x0000001c   Code   RO          552    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x00000324   0x00000324   0x00000002   Code   RO          407    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          413    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          415    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          417    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          420    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          422    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          424    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          427    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          429    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          431    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          433    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          435    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          437    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          439    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          441    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          443    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          445    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          447    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          451    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          453    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          455    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000000   Code   RO          457    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
+    0x00000326   0x00000326   0x00000002   Code   RO          458    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
+    0x00000328   0x00000328   0x00000002   Code   RO          482    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x0000032a   0x0000032a   0x00000000   Code   RO          497    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x0000032a   0x0000032a   0x00000000   Code   RO          499    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x0000032a   0x0000032a   0x00000000   Code   RO          502    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x0000032a   0x0000032a   0x00000000   Code   RO          505    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x0000032a   0x0000032a   0x00000000   Code   RO          507    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x0000032a   0x0000032a   0x00000000   Code   RO          510    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x0000032a   0x0000032a   0x00000002   Code   RO          511    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x0000032c   0x0000032c   0x00000000   Code   RO          320    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x0000032c   0x0000032c   0x00000000   Code   RO          370    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x0000032c   0x0000032c   0x00000006   Code   RO          382    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x00000332   0x00000332   0x00000000   Code   RO          372    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x00000332   0x00000332   0x00000004   Code   RO          373    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x00000336   0x00000336   0x00000000   Code   RO          375    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x00000336   0x00000336   0x00000008   Code   RO          376    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0000033e   0x0000033e   0x00000002   Code   RO          410    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x00000340   0x00000340   0x00000000   Code   RO          462    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x00000340   0x00000340   0x00000004   Code   RO          463    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000344   0x00000344   0x00000006   Code   RO          464    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0000034a   0x0000034a   0x00000002   PAD
     0x0000034c   0x0000034c   0x00000030   Code   RO            4    .text               startup.o
-    0x0000037c   0x0000037c   0x00000006   Code   RO          272    .text               c_w.l(heapauxi.o)
-    0x00000382   0x00000382   0x00000016   Code   RO          320    .text               c_w.l(_rserrno.o)
-    0x00000398   0x00000398   0x00000008   Code   RO          386    .text               c_w.l(rt_errno_addr_intlibspace.o)
-    0x000003a0   0x000003a0   0x00000008   Code   RO          394    .text               c_w.l(libspace.o)
-    0x000003a8   0x000003a8   0x0000004a   Code   RO          397    .text               c_w.l(sys_stackheap_outer.o)
-    0x000003f2   0x000003f2   0x00000012   Code   RO          399    .text               c_w.l(exit.o)
-    0x00000404   0x00000404   0x0000000c   Code   RO          471    .text               c_w.l(sys_exit.o)
-    0x00000410   0x00000410   0x00000002   Code   RO          486    .text               c_w.l(use_no_semi.o)
-    0x00000412   0x00000412   0x00000000   Code   RO          488    .text               c_w.l(indicate_semi.o)
+    0x0000037c   0x0000037c   0x00000006   Code   RO          273    .text               c_w.l(heapauxi.o)
+    0x00000382   0x00000382   0x00000016   Code   RO          321    .text               c_w.l(_rserrno.o)
+    0x00000398   0x00000398   0x00000008   Code   RO          387    .text               c_w.l(rt_errno_addr_intlibspace.o)
+    0x000003a0   0x000003a0   0x00000008   Code   RO          395    .text               c_w.l(libspace.o)
+    0x000003a8   0x000003a8   0x0000004a   Code   RO          398    .text               c_w.l(sys_stackheap_outer.o)
+    0x000003f2   0x000003f2   0x00000012   Code   RO          400    .text               c_w.l(exit.o)
+    0x00000404   0x00000404   0x0000000c   Code   RO          472    .text               c_w.l(sys_exit.o)
+    0x00000410   0x00000410   0x00000002   Code   RO          487    .text               c_w.l(use_no_semi.o)
+    0x00000412   0x00000412   0x00000000   Code   RO          489    .text               c_w.l(indicate_semi.o)
     0x00000412   0x00000412   0x00000002   PAD
-    0x00000414   0x00000414   0x0000004e   Code   RO           98    .text.ADC0_In       adc.o
+    0x00000414   0x00000414   0x0000004e   Code   RO           99    .text.ADC0_In       adc.o
     0x00000462   0x00000462   0x00000002   PAD
-    0x00000464   0x00000464   0x00000110   Code   RO           96    .text.ADC0_Init     adc.o
+    0x00000464   0x00000464   0x00000110   Code   RO           97    .text.ADC0_Init     adc.o
     0x00000574   0x00000574   0x0000002e   Code   RO           17    .text.Delay1ms      spaceinvadersgame.o
     0x000005a2   0x000005a2   0x00000002   PAD
-    0x000005a4   0x000005a4   0x000000a6   Code   RO           25    .text.Draw          spaceinvadersgame.o
-    0x0000064a   0x0000064a   0x00000002   PAD
-    0x0000064c   0x0000064c   0x00000092   Code   RO           19    .text.Enemy_Init    spaceinvadersgame.o
-    0x000006de   0x000006de   0x00000002   PAD
-    0x000006e0   0x000006e0   0x00000194   Code   RO           23    .text.Move          spaceinvadersgame.o
-    0x00000874   0x00000874   0x0000002e   Code   RO           78    .text.Nokia5110_ClearBuffer  nokia5110.o
-    0x000008a2   0x000008a2   0x00000002   PAD
-    0x000008a4   0x000008a4   0x00000010   Code   RO           84    .text.Nokia5110_DisplayBuffer  nokia5110.o
-    0x000008b4   0x000008b4   0x0000003a   Code   RO           74    .text.Nokia5110_DrawFullImage  nokia5110.o
-    0x000008ee   0x000008ee   0x00000002   PAD
-    0x000008f0   0x000008f0   0x00000162   Code   RO           60    .text.Nokia5110_Init  nokia5110.o
-    0x00000a52   0x00000a52   0x00000002   PAD
-    0x00000a54   0x00000a54   0x00000206   Code   RO           76    .text.Nokia5110_PrintBMP  nokia5110.o
-    0x00000c5a   0x00000c5a   0x00000002   PAD
-    0x00000c5c   0x00000c5c   0x0000004e   Code   RO           70    .text.Nokia5110_SetCursor  nokia5110.o
-    0x00000caa   0x00000caa   0x00000002   PAD
-    0x00000cac   0x00000cac   0x000000a0   Code   RO           27    .text.Randomize     spaceinvadersgame.o
-    0x00000d4c   0x00000d4c   0x00000024   Code   RO           21    .text.SpaceShip_Init  spaceinvadersgame.o
-    0x00000d70   0x00000d70   0x00000044   Code   RO           15    .text.SysTick_Handler  spaceinvadersgame.o
-    0x00000db4   0x00000db4   0x00000042   Code   RO           13    .text.SysTick_Init  spaceinvadersgame.o
-    0x00000df6   0x00000df6   0x00000002   PAD
-    0x00000df8   0x00000df8   0x00000090   Code   RO           62    .text.lcdwrite      nokia5110.o
-    0x00000e88   0x00000e88   0x0000009e   Code   RO           29    .text.main          spaceinvadersgame.o
-    0x00000f26   0x00000f26   0x00000002   PAD
-    0x00000f28   0x00000f28   0x0000000c   Code   RO          106    i.ADC1_In           texas.o
-    0x00000f34   0x00000f34   0x000000d4   Code   RO          107    i.ADC1_Init         texas.o
-    0x00001008   0x00001008   0x0000006c   Code   RO          109    i.Encrypt           texas.o
-    0x00001074   0x00001074   0x0000007c   Code   RO          110    i.PLL_Init          texas.o
-    0x000010f0   0x000010f0   0x00000018   Code   RO          112    i.SetCode           texas.o
-    0x00001108   0x00001108   0x00000018   Code   RO          113    i.SetCourse         texas.o
-    0x00001120   0x00001120   0x000000cc   Code   RO          114    i.SetGrade          texas.o
-    0x000011ec   0x000011ec   0x00000290   Code   RO          118    i.TExaS_Init        texas.o
-    0x0000147c   0x0000147c   0x00000020   Code   RO          120    i.Timer4A_Handler   texas.o
-    0x0000149c   0x0000149c   0x00000880   Code   RO          121    i.Timer5A_Handler   texas.o
-    0x00001d1c   0x00001d1c   0x000000c0   Code   RO          124    i.UART0_Init        texas.o
-    0x00001ddc   0x00001ddc   0x00000028   Code   RO          359    i.__ARM_fpclassify  m_ws.l(fpclassify.o)
-    0x00001e04   0x00001e04   0x000000aa   Code   RO          361    i.__kernel_poly     m_ws.l(poly.o)
-    0x00001eae   0x00001eae   0x00000002   PAD
-    0x00001eb0   0x00001eb0   0x00000010   Code   RO          345    i.__mathlib_dbl_divzero  m_ws.l(dunder.o)
-    0x00001ec0   0x00001ec0   0x00000004   Code   RO          347    i.__mathlib_dbl_infnan2  m_ws.l(dunder.o)
-    0x00001ec4   0x00001ec4   0x0000000c   Code   RO          348    i.__mathlib_dbl_invalid  m_ws.l(dunder.o)
-    0x00001ed0   0x00001ed0   0x0000000e   Code   RO          349    i.__mathlib_dbl_overflow  m_ws.l(dunder.o)
-    0x00001ede   0x00001ede   0x00000002   PAD
-    0x00001ee0   0x00001ee0   0x00000010   Code   RO          351    i.__mathlib_dbl_underflow  m_ws.l(dunder.o)
-    0x00001ef0   0x00001ef0   0x000000a8   Code   RO          127    i.checkADCconfiguration  texas.o
-    0x00001f98   0x00001f98   0x000002a8   Code   RO          128    i.checkDisplayconfiguration  texas.o
-    0x00002240   0x00002240   0x000001a4   Code   RO          129    i.checkLinearity    texas.o
-    0x000023e4   0x000023e4   0x000009ec   Code   RO          313    i.pow               m_ws.l(pow.o)
-    0x00002dd0   0x00002dd0   0x00000094   Code   RO          317    i.round             m_ws.l(round.o)
-    0x00002e64   0x00002e64   0x0000004c   Code   RO          365    i.sqrt              m_ws.l(sqrt.o)
-    0x00002eb0   0x00002eb0   0x00000150   Code   RO          322    x$fpl$dadd          fz_ws.l(daddsub_clz.o)
-    0x00003000   0x00003000   0x00000010   Code   RO          388    x$fpl$dcheck1       fz_ws.l(dcheck1.o)
-    0x00003010   0x00003010   0x00000018   Code   RO          390    x$fpl$dcmpinf       fz_ws.l(dcmpi.o)
-    0x00003028   0x00003028   0x000002b4   Code   RO          277    x$fpl$ddiv          fz_ws.l(ddiv.o)
-    0x000032dc   0x000032dc   0x0000005a   Code   RO          280    x$fpl$dfixu         fz_ws.l(dfixu.o)
-    0x00003336   0x00003336   0x0000002e   Code   RO          285    x$fpl$dflt          fz_ws.l(dflt_clz.o)
-    0x00003364   0x00003364   0x00000026   Code   RO          284    x$fpl$dfltu         fz_ws.l(dflt_clz.o)
-    0x0000338a   0x0000338a   0x00000002   PAD
-    0x0000338c   0x0000338c   0x00000078   Code   RO          328    x$fpl$dleqf         fz_ws.l(dleqf.o)
-    0x00003404   0x00003404   0x00000154   Code   RO          290    x$fpl$dmul          fz_ws.l(dmul.o)
-    0x00003558   0x00003558   0x0000009c   Code   RO          330    x$fpl$dnaninf       fz_ws.l(dnaninf.o)
-    0x000035f4   0x000035f4   0x0000000c   Code   RO          332    x$fpl$dretinf       fz_ws.l(dretinf.o)
-    0x00003600   0x00003600   0x0000006c   Code   RO          334    x$fpl$drleqf        fz_ws.l(drleqf.o)
-    0x0000366c   0x0000366c   0x000000b4   Code   RO          336    x$fpl$drnd          fz_ws.l(drnd.o)
-    0x00003720   0x00003720   0x00000016   Code   RO          323    x$fpl$drsb          fz_ws.l(daddsub_clz.o)
-    0x00003736   0x00003736   0x00000002   PAD
-    0x00003738   0x00003738   0x00000198   Code   RO          392    x$fpl$dsqrt         fz_ws.l(dsqrt_umaal.o)
-    0x000038d0   0x000038d0   0x000001dc   Code   RO          324    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
-    0x00003aac   0x00003aac   0x00000056   Code   RO          292    x$fpl$f2d           fz_ws.l(f2d.o)
-    0x00003b02   0x00003b02   0x00000002   PAD
-    0x00003b04   0x00003b04   0x000000c4   Code   RO          294    x$fpl$fadd          fz_ws.l(faddsub_clz.o)
-    0x00003bc8   0x00003bc8   0x00000184   Code   RO          301    x$fpl$fdiv          fz_ws.l(fdiv.o)
-    0x00003d4c   0x00003d4c   0x00000026   Code   RO          304    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
-    0x00003d72   0x00003d72   0x00000002   PAD
-    0x00003d74   0x00003d74   0x00000102   Code   RO          310    x$fpl$fmul          fz_ws.l(fmul.o)
-    0x00003e76   0x00003e76   0x0000008c   Code   RO          338    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
-    0x00003f02   0x00003f02   0x0000000a   Code   RO          340    x$fpl$fretinf       fz_ws.l(fretinf.o)
-    0x00003f0c   0x00003f0c   0x000000ea   Code   RO          296    x$fpl$fsub          fz_ws.l(faddsub_clz.o)
-    0x00003ff6   0x00003ff6   0x00000064   Code   RO          407    x$fpl$retnan        fz_ws.l(retnan.o)
-    0x0000405a   0x0000405a   0x0000005c   Code   RO          342    x$fpl$scalbn        fz_ws.l(scalbn.o)
-    0x000040b6   0x000040b6   0x00000030   Code   RO          458    x$fpl$trapveneer    fz_ws.l(trapv.o)
-    0x000040e6   0x000040e6   0x00000000   Code   RO          344    x$fpl$usenofp       fz_ws.l(usenofp.o)
-    0x000040e6   0x000040e6   0x00000002   PAD
-    0x000040e8   0x000040e8   0x00001b90   Data   RO          132    .constdata          texas.o
-    0x00005c78   0x00005c78   0x00000088   Data   RO          314    .constdata          m_ws.l(pow.o)
-    0x00005d00   0x00005d00   0x00000008   Data   RO          363    .constdata          m_ws.l(qnan.o)
-    0x00005d08   0x00005d08   0x00000097   Data   RO           37    .rodata.Enemy1      spaceinvadersgame.o
-    0x00005d9f   0x00005d9f   0x00000097   Data   RO           38    .rodata.Enemy2      spaceinvadersgame.o
-    0x00005e36   0x00005e36   0x000000ef   Data   RO           41    .rodata.SpaceShip   spaceinvadersgame.o
-    0x00005f25   0x00005f25   0x000008b7   Data   RO           43    .rodata.image       spaceinvadersgame.o
-    0x000067dc   0x000067dc   0x00000020   Data   RO          544    Region$$Table       anon$$obj.o
+    0x000005a4   0x000005a4   0x00000094   Code   RO           25    .text.Draw          spaceinvadersgame.o
+    0x00000638   0x00000638   0x00000088   Code   RO           19    .text.Enemy_Init    spaceinvadersgame.o
+    0x000006c0   0x000006c0   0x000001f4   Code   RO           23    .text.Move          spaceinvadersgame.o
+    0x000008b4   0x000008b4   0x0000002e   Code   RO           79    .text.Nokia5110_ClearBuffer  nokia5110.o
+    0x000008e2   0x000008e2   0x00000002   PAD
+    0x000008e4   0x000008e4   0x00000010   Code   RO           85    .text.Nokia5110_DisplayBuffer  nokia5110.o
+    0x000008f4   0x000008f4   0x0000003a   Code   RO           75    .text.Nokia5110_DrawFullImage  nokia5110.o
+    0x0000092e   0x0000092e   0x00000002   PAD
+    0x00000930   0x00000930   0x00000162   Code   RO           61    .text.Nokia5110_Init  nokia5110.o
+    0x00000a92   0x00000a92   0x00000002   PAD
+    0x00000a94   0x00000a94   0x00000206   Code   RO           77    .text.Nokia5110_PrintBMP  nokia5110.o
+    0x00000c9a   0x00000c9a   0x00000002   PAD
+    0x00000c9c   0x00000c9c   0x0000004e   Code   RO           71    .text.Nokia5110_SetCursor  nokia5110.o
+    0x00000cea   0x00000cea   0x00000002   PAD
+    0x00000cec   0x00000cec   0x000000a0   Code   RO           27    .text.Randomize     spaceinvadersgame.o
+    0x00000d8c   0x00000d8c   0x00000024   Code   RO           21    .text.SpaceShip_Init  spaceinvadersgame.o
+    0x00000db0   0x00000db0   0x0000000e   Code   RO           15    .text.SysTick_Handler  spaceinvadersgame.o
+    0x00000dbe   0x00000dbe   0x00000002   PAD
+    0x00000dc0   0x00000dc0   0x00000042   Code   RO           13    .text.SysTick_Init  spaceinvadersgame.o
+    0x00000e02   0x00000e02   0x00000002   PAD
+    0x00000e04   0x00000e04   0x00000090   Code   RO           63    .text.lcdwrite      nokia5110.o
+    0x00000e94   0x00000e94   0x00000096   Code   RO           29    .text.main          spaceinvadersgame.o
+    0x00000f2a   0x00000f2a   0x00000002   PAD
+    0x00000f2c   0x00000f2c   0x0000000c   Code   RO          107    i.ADC1_In           texas.o
+    0x00000f38   0x00000f38   0x000000d4   Code   RO          108    i.ADC1_Init         texas.o
+    0x0000100c   0x0000100c   0x0000006c   Code   RO          110    i.Encrypt           texas.o
+    0x00001078   0x00001078   0x0000007c   Code   RO          111    i.PLL_Init          texas.o
+    0x000010f4   0x000010f4   0x00000018   Code   RO          113    i.SetCode           texas.o
+    0x0000110c   0x0000110c   0x00000018   Code   RO          114    i.SetCourse         texas.o
+    0x00001124   0x00001124   0x000000cc   Code   RO          115    i.SetGrade          texas.o
+    0x000011f0   0x000011f0   0x00000290   Code   RO          119    i.TExaS_Init        texas.o
+    0x00001480   0x00001480   0x00000020   Code   RO          121    i.Timer4A_Handler   texas.o
+    0x000014a0   0x000014a0   0x00000880   Code   RO          122    i.Timer5A_Handler   texas.o
+    0x00001d20   0x00001d20   0x000000c0   Code   RO          125    i.UART0_Init        texas.o
+    0x00001de0   0x00001de0   0x00000028   Code   RO          360    i.__ARM_fpclassify  m_ws.l(fpclassify.o)
+    0x00001e08   0x00001e08   0x000000aa   Code   RO          362    i.__kernel_poly     m_ws.l(poly.o)
+    0x00001eb2   0x00001eb2   0x00000002   PAD
+    0x00001eb4   0x00001eb4   0x00000010   Code   RO          346    i.__mathlib_dbl_divzero  m_ws.l(dunder.o)
+    0x00001ec4   0x00001ec4   0x00000004   Code   RO          348    i.__mathlib_dbl_infnan2  m_ws.l(dunder.o)
+    0x00001ec8   0x00001ec8   0x0000000c   Code   RO          349    i.__mathlib_dbl_invalid  m_ws.l(dunder.o)
+    0x00001ed4   0x00001ed4   0x0000000e   Code   RO          350    i.__mathlib_dbl_overflow  m_ws.l(dunder.o)
+    0x00001ee2   0x00001ee2   0x00000002   PAD
+    0x00001ee4   0x00001ee4   0x00000010   Code   RO          352    i.__mathlib_dbl_underflow  m_ws.l(dunder.o)
+    0x00001ef4   0x00001ef4   0x000000a8   Code   RO          128    i.checkADCconfiguration  texas.o
+    0x00001f9c   0x00001f9c   0x000002a8   Code   RO          129    i.checkDisplayconfiguration  texas.o
+    0x00002244   0x00002244   0x000001a4   Code   RO          130    i.checkLinearity    texas.o
+    0x000023e8   0x000023e8   0x000009ec   Code   RO          314    i.pow               m_ws.l(pow.o)
+    0x00002dd4   0x00002dd4   0x00000094   Code   RO          318    i.round             m_ws.l(round.o)
+    0x00002e68   0x00002e68   0x0000004c   Code   RO          366    i.sqrt              m_ws.l(sqrt.o)
+    0x00002eb4   0x00002eb4   0x00000150   Code   RO          323    x$fpl$dadd          fz_ws.l(daddsub_clz.o)
+    0x00003004   0x00003004   0x00000010   Code   RO          389    x$fpl$dcheck1       fz_ws.l(dcheck1.o)
+    0x00003014   0x00003014   0x00000018   Code   RO          391    x$fpl$dcmpinf       fz_ws.l(dcmpi.o)
+    0x0000302c   0x0000302c   0x000002b4   Code   RO          278    x$fpl$ddiv          fz_ws.l(ddiv.o)
+    0x000032e0   0x000032e0   0x0000005a   Code   RO          281    x$fpl$dfixu         fz_ws.l(dfixu.o)
+    0x0000333a   0x0000333a   0x0000002e   Code   RO          286    x$fpl$dflt          fz_ws.l(dflt_clz.o)
+    0x00003368   0x00003368   0x00000026   Code   RO          285    x$fpl$dfltu         fz_ws.l(dflt_clz.o)
+    0x0000338e   0x0000338e   0x00000002   PAD
+    0x00003390   0x00003390   0x00000078   Code   RO          329    x$fpl$dleqf         fz_ws.l(dleqf.o)
+    0x00003408   0x00003408   0x00000154   Code   RO          291    x$fpl$dmul          fz_ws.l(dmul.o)
+    0x0000355c   0x0000355c   0x0000009c   Code   RO          331    x$fpl$dnaninf       fz_ws.l(dnaninf.o)
+    0x000035f8   0x000035f8   0x0000000c   Code   RO          333    x$fpl$dretinf       fz_ws.l(dretinf.o)
+    0x00003604   0x00003604   0x0000006c   Code   RO          335    x$fpl$drleqf        fz_ws.l(drleqf.o)
+    0x00003670   0x00003670   0x000000b4   Code   RO          337    x$fpl$drnd          fz_ws.l(drnd.o)
+    0x00003724   0x00003724   0x00000016   Code   RO          324    x$fpl$drsb          fz_ws.l(daddsub_clz.o)
+    0x0000373a   0x0000373a   0x00000002   PAD
+    0x0000373c   0x0000373c   0x00000198   Code   RO          393    x$fpl$dsqrt         fz_ws.l(dsqrt_umaal.o)
+    0x000038d4   0x000038d4   0x000001dc   Code   RO          325    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
+    0x00003ab0   0x00003ab0   0x00000056   Code   RO          293    x$fpl$f2d           fz_ws.l(f2d.o)
+    0x00003b06   0x00003b06   0x00000002   PAD
+    0x00003b08   0x00003b08   0x000000c4   Code   RO          295    x$fpl$fadd          fz_ws.l(faddsub_clz.o)
+    0x00003bcc   0x00003bcc   0x00000184   Code   RO          302    x$fpl$fdiv          fz_ws.l(fdiv.o)
+    0x00003d50   0x00003d50   0x00000026   Code   RO          305    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
+    0x00003d76   0x00003d76   0x00000002   PAD
+    0x00003d78   0x00003d78   0x00000102   Code   RO          311    x$fpl$fmul          fz_ws.l(fmul.o)
+    0x00003e7a   0x00003e7a   0x0000008c   Code   RO          339    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
+    0x00003f06   0x00003f06   0x0000000a   Code   RO          341    x$fpl$fretinf       fz_ws.l(fretinf.o)
+    0x00003f10   0x00003f10   0x000000ea   Code   RO          297    x$fpl$fsub          fz_ws.l(faddsub_clz.o)
+    0x00003ffa   0x00003ffa   0x00000064   Code   RO          408    x$fpl$retnan        fz_ws.l(retnan.o)
+    0x0000405e   0x0000405e   0x0000005c   Code   RO          343    x$fpl$scalbn        fz_ws.l(scalbn.o)
+    0x000040ba   0x000040ba   0x00000030   Code   RO          459    x$fpl$trapveneer    fz_ws.l(trapv.o)
+    0x000040ea   0x000040ea   0x00000000   Code   RO          345    x$fpl$usenofp       fz_ws.l(usenofp.o)
+    0x000040ea   0x000040ea   0x00000002   PAD
+    0x000040ec   0x000040ec   0x00001b90   Data   RO          133    .constdata          texas.o
+    0x00005c7c   0x00005c7c   0x00000004   PAD
+    0x00005c80   0x00005c80   0x00000088   Data   RO          315    .constdata          m_ws.l(pow.o)
+    0x00005d08   0x00005d08   0x00000008   Data   RO          364    .constdata          m_ws.l(qnan.o)
+    0x00005d10   0x00005d10   0x00000097   Data   RO           37    .rodata.Enemy1      spaceinvadersgame.o
+    0x00005da7   0x00005da7   0x00000097   Data   RO           38    .rodata.Enemy2      spaceinvadersgame.o
+    0x00005e3e   0x00005e3e   0x000000ef   Data   RO           41    .rodata.SpaceShip   spaceinvadersgame.o
+    0x00005f2d   0x00005f2d   0x000008b7   Data   RO           43    .rodata.image       spaceinvadersgame.o
+    0x000067e4   0x000067e4   0x00000020   Data   RO          545    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000067fc, Size: 0x0000008c, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x000067fc   0x00000070   Data   RW          133    .data               texas.o
-    0x20000070   0x0000686c   0x00000004   Data   RW           46    .data.count         spaceinvadersgame.o
-    0x20000074   0x00006870   0x00000004   Data   RW           34    .data.enemy_width   spaceinvadersgame.o
-    0x20000078   0x00006874   0x00000004   Data   RW           36    .data.speed_divider  spaceinvadersgame.o
-    0x2000007c   0x00006878   0x00000010   Data   RW           47    .data.vertical_array  spaceinvadersgame.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000090, Load base: 0x00006888, Size: 0x00000958, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00006804, Size: 0x00000088, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000090        -       0x00000274   Zero   RW          131    .bss                texas.o
-    0x20000304        -       0x00000060   Zero   RW          395    .bss                c_w.l(libspace.o)
-    0x20000364        -       0x00000004   Zero   RW           50    .bss.Distance       spaceinvadersgame.o
-    0x20000368        -       0x00000064   Zero   RW           44    .bss.Enemy          spaceinvadersgame.o
-    0x200003cc        -       0x00000004   Zero   RW           31    .bss.Flag           spaceinvadersgame.o
-    0x200003d0        -       0x00000004   Zero   RW           33    .bss.FrameCount     spaceinvadersgame.o
-    0x200003d4        -       0x000001f8   Zero   RW           88    .bss.Screen         nokia5110.o
-    0x200005cc        -       0x00000004   Zero   RW           48    .bss.j              spaceinvadersgame.o
-    0x200005d0        -       0x00000014   Zero   RW           45    .bss.player         spaceinvadersgame.o
-    0x200005e4   0x00006888   0x00000004   PAD
-    0x200005e8        -       0x00000000   Zero   RW            2    HEAP                startup.o
-    0x200005e8        -       0x00000400   Zero   RW            1    STACK               startup.o
+    0x20000000   0x00006804   0x00000070   Data   RW          134    .data               texas.o
+    0x20000070   0x00006874   0x00000004   Data   RW           46    .data.count         spaceinvadersgame.o
+    0x20000074   0x00006878   0x00000010   Data   RW           47    .data.vertical_array  spaceinvadersgame.o
+    0x20000084   0x00006888   0x00000004   Data   RW           49    .data.x             spaceinvadersgame.o
+
+
+    Execution Region ER_ZI (Exec base: 0x20000088, Load base: 0x0000688c, Size: 0x00000958, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000088        -       0x00000274   Zero   RW          132    .bss                texas.o
+    0x200002fc        -       0x00000060   Zero   RW          396    .bss                c_w.l(libspace.o)
+    0x2000035c        -       0x00000004   Zero   RW           51    .bss.Distance       spaceinvadersgame.o
+    0x20000360        -       0x00000064   Zero   RW           44    .bss.Enemy          spaceinvadersgame.o
+    0x200003c4        -       0x00000004   Zero   RW           31    .bss.Flag           spaceinvadersgame.o
+    0x200003c8        -       0x00000004   Zero   RW           33    .bss.FrameCount     spaceinvadersgame.o
+    0x200003cc        -       0x000001f8   Zero   RW           89    .bss.Screen         nokia5110.o
+    0x200005c4        -       0x00000004   Zero   RW           48    .bss.j              spaceinvadersgame.o
+    0x200005c8        -       0x00000014   Zero   RW           45    .bss.player         spaceinvadersgame.o
+    0x200005dc   0x0000688c   0x00000004   PAD
+    0x200005e0        -       0x00000000   Zero   RW            2    HEAP                startup.o
+    0x200005e0        -       0x00000400   Zero   RW            1    STACK               startup.o
 
 
 ==============================================================================
@@ -1298,14 +1295,14 @@ Image component sizes
 
        350          0          0          0          0        660   adc.o
       1214          4          0          0        504       4146   nokia5110.o
-      1250          0       2772         28        136       3502   spaceinvadersgame.o
+      1256          0       2772         24        136       3587   spaceinvadersgame.o
        692        632          0          0       1024        948   startup.o
       5032        592       7056        112        628      29993   texas.o
 
     ----------------------------------------------------------------------
-      8560       1228       9860        140       2296      39249   Object Totals
+      8564       1228       9864        136       2296      39334   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        22          0          0          0          4          0   (incl. Padding)
+        20          0          4          0          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1387,15 +1384,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     16616       1798      10004        140       2392      40773   Grand Totals
-     16616       1798      10004        140       2392      40773   ELF Image Totals
-     16616       1798      10004        140          0          0   ROM Totals
+     16620       1798      10008        136       2392      40858   Grand Totals
+     16620       1798      10008        136       2392      40858   ELF Image Totals
+     16620       1798      10008        136          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                26620 (  26.00kB)
-    Total RW  Size (RW Data + ZI Data)              2532 (   2.47kB)
-    Total ROM Size (Code + RO Data + RW Data)      26760 (  26.13kB)
+    Total RO  Size (Code + RO Data)                26628 (  26.00kB)
+    Total RW  Size (RW Data + ZI Data)              2528 (   2.47kB)
+    Total ROM Size (Code + RO Data + RW Data)      26764 (  26.14kB)
 
 ==============================================================================
 

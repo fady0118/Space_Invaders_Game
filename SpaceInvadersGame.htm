@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SpaceInvadersGame.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvadersGame.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Thu Apr 11 16:42:08 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Thu Apr 11 19:42:19 2024
 <BR><P>
 <H3>Maximum Stack Usage =        256 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -807,7 +807,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[92]"></a>Draw</STRONG> (Thumb, 166 bytes, Stack size 16 bytes, spaceinvadersgame.o(.text.Draw))
+<P><STRONG><a name="[92]"></a>Draw</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, spaceinvadersgame.o(.text.Draw))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Draw &rArr; Nokia5110_DisplayBuffer &rArr; Nokia5110_DrawFullImage &rArr; Nokia5110_SetCursor &rArr; lcdwrite
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Nokia5110_DisplayBuffer
@@ -815,24 +815,22 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Nokia5110_ClearBuffer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Move
 </UL>
 
-<P><STRONG><a name="[ae]"></a>Enemy_Init</STRONG> (Thumb, 146 bytes, Stack size 12 bytes, spaceinvadersgame.o(.text.Enemy_Init))
+<P><STRONG><a name="[ae]"></a>Enemy_Init</STRONG> (Thumb, 136 bytes, Stack size 12 bytes, spaceinvadersgame.o(.text.Enemy_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Enemy_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[96]"></a>Move</STRONG> (Thumb, 404 bytes, Stack size 16 bytes, spaceinvadersgame.o(.text.Move))
-<BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = Move &rArr; Draw &rArr; Nokia5110_DisplayBuffer &rArr; Nokia5110_DrawFullImage &rArr; Nokia5110_SetCursor &rArr; lcdwrite
+<P><STRONG><a name="[96]"></a>Move</STRONG> (Thumb, 500 bytes, Stack size 24 bytes, spaceinvadersgame.o(.text.Move))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = Move &rArr; round &rArr; _drnd &rArr; __fpl_dnaninf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;round
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Draw
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC0_In
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -909,7 +907,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, spaceinvadersgame.o(.text.SysTick_Handler))
+<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, spaceinvadersgame.o(.text.SysTick_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
 <P><STRONG><a name="[ab]"></a>SysTick_Init</STRONG> (Thumb, 66 bytes, Stack size 4 bytes, spaceinvadersgame.o(.text.SysTick_Init))
@@ -918,7 +916,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[86]"></a>main</STRONG> (Thumb, 158 bytes, Stack size 24 bytes, spaceinvadersgame.o(.text.main))
+<P><STRONG><a name="[86]"></a>main</STRONG> (Thumb, 150 bytes, Stack size 24 bytes, spaceinvadersgame.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Randomize &rArr; pow &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 </UL>

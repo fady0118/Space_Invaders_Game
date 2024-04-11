@@ -61,11 +61,11 @@ unsigned long ADCdata;    // 12-bit 0 to 4095 sample
 unsigned long Flag=0;       // semaphore for enemy movement in the game between systick and main loop
 unsigned long TimerCount=0; 
 unsigned long FrameCount=0;
-unsigned long enemy_width=8;
-unsigned long SpaceShip_width=12;
-unsigned long speed_divider=3; // Enemy moves 1 pixel every (25ms * speed_divider)
+const unsigned long enemy_width=8;
+const unsigned long SpaceShip_width=14;
+const unsigned long speed_divider=3; // Enemy moves 1 pixel every 25ms*(speed_divider+1)
 
-// Initialize SysTick interrupts to trigger at 40 Hz, 25 ms
+//--------Initialize SysTick interrupts to trigger at 40Hz--------
 void SysTick_Init(unsigned long period){
 NVIC_ST_CTRL_R=0;
 NVIC_ST_RELOAD_R=period-1; //period=2000,000 for 40hz
@@ -75,14 +75,8 @@ NVIC_ST_CTRL_R=0x07;
 }
 // executes every 25 ms, collects a sample, converts and stores in mailbox
 void SysTick_Handler(void){ 
-//debugging tool toggle PF1
-	GPIO_PORTF_DATA_R^=0x02; // toggle PF1
-	GPIO_PORTF_DATA_R^=0x02; // toggle PF1 again
-
-	GPIO_PORTF_DATA_R^=0x02; // toggle PF1 again
-
-// Flag2 is a semaphore between SysTick_Handler and handler to call the draw function
-Flag=(Flag+1)%(speed_divider+1);		// 0,1,2,0,1,2,....
+// Flag is a semaphore between SysTick_Handler and handler to call the draw function
+Flag=1;		
 }
 
 
@@ -274,23 +268,32 @@ void SpaceShip_Init(void){
 unsigned long count=1; //related to the movement function
 long vertical_array[4]={-1,-1,1,1}; //vertical movement increment array will make zigzag movement 
 unsigned long j=0; // vertical_array index
-
+unsigned long x=speed_divider; // for slowing enemy speed
 void Move(void){
-//---------------player move----------------
+//---------------player_Move---------------
 	// ADC has a precision 12-bits 
 	// ADC0_In() ranges between 0 to 4095
 	// the player SpaceShip x-position can be from 0 to 84-SpaceShip_width which is 14 (0 to 70)
-	player.x=round(((double)ADC0_In()/4095)*70);  // update player x-position scale form (0~4095) to (0~70)
+			// Slider_value - player.x value decides which direction to move the spaceship
+			// that will cause the ship to keep moving until it reaches the slider position
+				  unsigned long Slider_value;
+				  Slider_value=round(((double)ADC0_In()/4095)*(84-SpaceShip_width));  // update player x-position scaled from (0~4095) to (0~70)
+					if(Slider_value>player.x){//move right
+					player.x+=1; // spaceship speed = 1 px/move
+					}
+					else if(Slider_value<player.x){// move left
+					player.x-=1; 
+					}
 
-//-------------Enemy_Move---------------
+//---------------Enemy_Move---------------
+if(x==speed_divider){
 unsigned long i;
 	if(count==1){ //move right
 				if(Enemy[4].x<84-enemy_width){
 					for(i=0;i<5;i++){
-						Enemy[i].x+=1;
+						Enemy[i].x+=1; // enemy speed = 1 px/move
 						Enemy[i].y+=vertical_array[j];
 					}
-					Draw();
 					j=(j+1)%4; // 0,1,2,3,.....
 				}
 				else{
@@ -304,14 +307,15 @@ unsigned long i;
 					Enemy[i].x-=1;
 					Enemy[i].y+=vertical_array[j];
 				}
-				Draw();
 				j=(j+1)%4;
 			}
 			else{
 					count=(count+1)&0x01; // 1,0,1,0,...
 				}
 	}
-
+	FrameCount=(FrameCount+1)&0x01; // switches between 2 images on every movement 0,1,0,1,...
+}
+x=(x+1)%(speed_divider+1); // 0,1,2,3,.....
 }
 
 //---------------Enemy&player_Draw------------
@@ -330,7 +334,7 @@ Nokia5110_ClearBuffer(); // clear display
 		}
 
 Nokia5110_DisplayBuffer(); //draw buffer
-FrameCount=(FrameCount+1)&0x01; // switches between 2 images on every movement 0,1,0,1,...
+
 }
 //------------------random_number_generator------------------
 //Using Source: Numerical Recipes
@@ -369,8 +373,9 @@ int main(void){
 	Draw();//draw the characters
   while(1){ 
 		// Wait for Flag to be 1 then animate the game
-while(Flag!=speed_divider){};
-Move();
-Flag=0;
+		while(Flag==0){};
+		Move();
+		Draw();
+		Flag=0;
 	}
 }
