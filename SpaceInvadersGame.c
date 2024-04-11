@@ -75,7 +75,14 @@ NVIC_ST_CTRL_R=0x07;
 }
 // executes every 25 ms, collects a sample, converts and stores in mailbox
 void SysTick_Handler(void){ 
+//debugging tool toggle PF1
+	GPIO_PORTF_DATA_R^=0x02; // toggle PF1
+	GPIO_PORTF_DATA_R^=0x02; // toggle PF1 again
 
+	GPIO_PORTF_DATA_R^=0x02; // toggle PF1 again
+
+// Flag2 is a semaphore between SysTick_Handler and handler to call the draw function
+Flag=(Flag+1)%(speed_divider+1);		// 0,1,2,0,1,2,....
 }
 
 
@@ -246,7 +253,7 @@ void Enemy_Init(void){
 unsigned long i;
 	for(i=0;i<5;i++){
 	Enemy[i].x=(i+1)*4+i*12-2; // initail enemy x-positions
-	Enemy[i].y=12;
+	Enemy[i].y=9;
 	Enemy[i].image[0]=	Enemy1;	
 	Enemy[i].image[1]=	Enemy2;	
 	Enemy[i].life=1;
@@ -258,6 +265,59 @@ void SpaceShip_Init(void){
 	player.y=47; // bottom of the screen
 	player.image[0]=	SpaceShip;	
 	player.life=3;
+}
+//-------------Movement---------------
+unsigned long count=1; //related to the movement function
+long vertical_array[4]={-1,-1,1,1}; //vertical movement increment array will make zigzag movement 
+unsigned long j=0; // vertical_array index
+
+void Move(void){
+
+//----------------Enemy_Move-----------------
+unsigned long i;
+	if(count==1){ //move right
+				if(Enemy[4].x<84-enemy_width){
+					for(i=0;i<5;i++){
+						Enemy[i].x+=1;
+						Enemy[i].y+=vertical_array[j];
+					}
+					Draw();
+					j=(j+1)%4; // 0,1,2,3,.....
+				}
+				else{
+					count=(count+1)&0x01; // 1,0,1,0,...
+					}
+		}
+
+	if(count==0){ // move left
+			if(Enemy[0].x>0){
+				for(i=0;i<5;i++){
+					Enemy[i].x-=1;
+					Enemy[i].y+=vertical_array[j];
+				}
+				Draw();
+				j=(j+1)%4;
+			}
+			else{
+					count=(count+1)&0x01; // 1,0,1,0,...
+				}
+	}
+
+}
+
+//---------------Enemy_Draw------------
+void Draw(void){
+unsigned long i;
+Nokia5110_ClearBuffer(); // clear display
+	// draw the enemy
+	for(i=0;i<5;i++){
+		if(Enemy[i].life>0){
+			Nokia5110_PrintBMP(Enemy[i].x, Enemy[i].y, Enemy[i].image[FrameCount], 0);
+		}
+	}
+
+Nokia5110_DisplayBuffer(); //draw buffer
+FrameCount=(FrameCount+1)&0x01; // switches between 2 images on every movement 0,1,0,1,...
 }
 
 int main(void){ 
@@ -276,6 +336,12 @@ int main(void){
 	Delay1ms(100);//100 ms delay
 	Nokia5110_ClearBuffer();
 	Nokia5110_DisplayBuffer();
+	//----------Draw_Characters------------
+	Enemy_Init();
   while(1){ 
+		// Wait for Flag to be 1 then animate the game
+while(Flag!=speed_divider){};
+Move();
+Flag=0;
 	}
 }
