@@ -270,14 +270,19 @@ void SpaceShip_Init(void){
 	player.image[0]=	SpaceShip;	
 	player.life=3;
 }
-//-------------Movement---------------
+//----------------------Movement------------------------
 unsigned long count=1; //related to the movement function
 long vertical_array[4]={-1,-1,1,1}; //vertical movement increment array will make zigzag movement 
 unsigned long j=0; // vertical_array index
 
 void Move(void){
+//---------------player move----------------
+	// ADC has a precision 12-bits 
+	// ADC0_In() ranges between 0 to 4095
+	// the player SpaceShip x-position can be from 0 to 84-SpaceShip_width which is 14 (0 to 70)
+	player.x=round(((double)ADC0_In()/4095)*70);  // update player x-position scale form (0~4095) to (0~70)
 
-//----------------Enemy_Move-----------------
+//-------------Enemy_Move---------------
 unsigned long i;
 	if(count==1){ //move right
 				if(Enemy[4].x<84-enemy_width){
@@ -309,7 +314,7 @@ unsigned long i;
 
 }
 
-//---------------Enemy_Draw------------
+//---------------Enemy&player_Draw------------
 void Draw(void){
 unsigned long i;
 Nokia5110_ClearBuffer(); // clear display
@@ -319,6 +324,10 @@ Nokia5110_ClearBuffer(); // clear display
 			Nokia5110_PrintBMP(Enemy[i].x, Enemy[i].y, Enemy[i].image[FrameCount], 0);
 		}
 	}
+	// draw the SpaceShip
+		if(player.life>0){
+			Nokia5110_PrintBMP(player.x, player.y, player.image[0], 0);
+		}
 
 Nokia5110_DisplayBuffer(); //draw buffer
 FrameCount=(FrameCount+1)&0x01; // switches between 2 images on every movement 0,1,0,1,...
@@ -355,7 +364,8 @@ int main(void){
 	Nokia5110_ClearBuffer();
 	Nokia5110_DisplayBuffer();
 	//----------Draw_Characters------------
-	Enemy_Init(Randomize(0,19,NVIC_ST_CURRENT_R)); //seed with current systick value
+	Enemy_Init(Randomize(0,19,NVIC_ST_CURRENT_R)); //Enemy_State_Initialization seed with current systick value
+	SpaceShip_Init(); //player_State_Initialization
 	Draw();//draw the characters
   while(1){ 
 		// Wait for Flag to be 1 then animate the game
