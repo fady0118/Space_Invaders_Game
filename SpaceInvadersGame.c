@@ -69,12 +69,24 @@ const unsigned long SpaceShip_width=14;
 const unsigned long SpaceShip_height=15;
 const unsigned long Laser_width=2;
 const unsigned long Laser_height=7;
+const unsigned long Special_Laser_width=6;
+const unsigned long Special_Laser_height=6;
 const unsigned long speed_divider=3; // Enemy moves 1 pixel every 25ms*(speed_divider+1)
 unsigned long Attack_Flag=0; 
 unsigned long Laser_number=0;
+unsigned long Special_Laser_number=0;
 unsigned long Explosion_x;
 unsigned long Explosion_y;
 unsigned long Explosion_Flag=0;
+unsigned long Explosion_90_x;
+unsigned long Explosion_90_y;
+unsigned long Explosion_90_Flag=0;
+unsigned long Explosion_45_x;
+unsigned long Explosion_45_y;
+unsigned long Explosion_45_Flag=0;
+unsigned long Explosion_135_x;
+unsigned long Explosion_135_y;
+unsigned long Explosion_135_Flag=0;
 //--------Initialize SysTick interrupts to trigger at 40Hz--------
 void SysTick_Init(unsigned long period){
 NVIC_ST_CTRL_R=0;
@@ -167,6 +179,33 @@ const unsigned char Laser_Normal[] ={
  0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x80, 0x00, 0xC0, 0xC0, 0xC0, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0xFF,
  0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0xF0, 0x00, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00,
  0x00, 0x00, 0xF0, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF,
+
+};
+
+const unsigned char Laser_s[] ={
+ 0x42, 0x4D, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x76, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00,
+ 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x23, 0x2E, 0x00, 0x00, 0x23, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80,
+ 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x80, 0x00, 0xC0, 0xC0, 0xC0, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0xFF,
+ 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x0F, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0xF0, 0xFF,
+ 0x0F, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0x0F, 0xFF, 0xF0, 0x00, 0x00, 0xFF, 0x00, 0x00, 0xFF,
+
+};
+
+const unsigned char Laser_s45[] ={
+ 0x42, 0x4D, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x76, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00,
+ 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x23, 0x2E, 0x00, 0x00, 0x23, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80,
+ 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x80, 0x00, 0xC0, 0xC0, 0xC0, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0xFF,
+ 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0x0F, 0x00, 0x80, 0x00, 0x00, 0xF0, 0xF7, 0x00, 0x0F, 0xFF,
+ 0xF0, 0x00, 0x00, 0xFF, 0xF0, 0x00, 0x8F, 0xFF, 0xF7, 0x00, 0x07, 0x00, 0x70, 0x00, 0xFF,
+
+};
+
+const unsigned char Laser_s135[] ={
+ 0x42, 0x4D, 0x8E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x76, 0x00, 0x00, 0x00, 0x28, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00,
+ 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x23, 0x2E, 0x00, 0x00, 0x23, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x80,
+ 0x00, 0x00, 0x00, 0x80, 0x80, 0x00, 0x80, 0x00, 0x00, 0x00, 0x80, 0x00, 0x80, 0x00, 0x80, 0x80, 0x00, 0x00, 0x80, 0x80, 0x80, 0x00, 0xC0, 0xC0, 0xC0, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0xFF,
+ 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0x08, 0x00, 0xF0, 0x00, 0x7F, 0x0F, 0x00, 0x00, 0x0F, 0xFF,
+ 0xF0, 0x00, 0x0F, 0xFF, 0x00, 0x00, 0x7F, 0xFF, 0xF8, 0x00, 0x07, 0x00, 0x70, 0x00, 0xFF,
 
 };
 
@@ -290,8 +329,10 @@ unsigned long life;	//0=dead, 1=alive
 typedef struct state Stype;
 Stype Enemy[5]; // Enemy sprites
 Stype player;		// Player sprites
-Stype Laser[100];		// Laser sprites
-
+Stype Laser[20];		// Laser sprites
+Stype Lasers90[20];		// Special Laser sprites 90deg
+Stype Lasers45[20];		// Special Laser sprites 45deg
+Stype Lasers135[20];		// Special Laser sprites 135deg
 //---------------Enemy_State_Initialization------------
 void Enemy_Init(unsigned long random){
 	unsigned long spacing=5; //space between enemies 
@@ -382,16 +423,53 @@ Nokia5110_ClearBuffer(); // clear display
 		if(player.life>0){
 			Nokia5110_PrintBMP(player.x, player.y, player.image[0], 0);
 		}
+//---normal_attack---
+	// draw the Normal Laser
 		for(unsigned long r=Laser_number;r>1;r--){
-	// draw the Laser
-		if(Laser[r-1].life==1){ //semaphore
+
+		if(Laser[r-1].life==1){
 			Nokia5110_PrintBMP(Laser[r-1].x, Laser[r-1].y,Laser[r-1].image[0] , 0);
 		}
-	}
+		}
+	// draw the Special lasers
+		//1)90 deg laser
+		for(unsigned long r=Special_Laser_number;r>1;r--){
+
+		if(Lasers90[r-1].life==1){
+			Nokia5110_PrintBMP(Lasers90[r-1].x, Lasers90[r-1].y,Lasers90[r-1].image[0] , 0);
+		}
+		}
+		//2)45 deg laser
+		for(unsigned long r=Special_Laser_number;r>1;r--){
+
+		if(Lasers45[r-1].life==1){ 
+			Nokia5110_PrintBMP(Lasers45[r-1].x, Lasers45[r-1].y,Lasers45[r-1].image[0] , 0);
+		}
+		}
+		//1)135 deg laser
+		for(unsigned long r=Special_Laser_number;r>1;r--){
+
+		if(Lasers135[r-1].life==1){
+			Nokia5110_PrintBMP(Lasers135[r-1].x, Lasers135[r-1].y,Lasers135[r-1].image[0] , 0);
+		}
+		}
+
 	//draw the Explosion
 		if(Explosion_Flag==1){
 		Nokia5110_PrintBMP(Explosion_x, Explosion_y,Explosion_1 , 0);
 			Explosion_Flag=0; //Acknowledge
+		}
+		if(Explosion_90_Flag==1){
+		Nokia5110_PrintBMP(Explosion_90_x, Explosion_90_y,Explosion_1 , 0);
+			Explosion_90_Flag=0; //Acknowledge
+		}
+		if(Explosion_45_Flag==1){
+		Nokia5110_PrintBMP(Explosion_45_x, Explosion_45_y,Explosion_1 , 0);
+			Explosion_45_Flag=0; //Acknowledge
+		}
+		if(Explosion_135_Flag==1){
+		Nokia5110_PrintBMP(Explosion_135_x, Explosion_135_y,Explosion_1 , 0);
+			Explosion_135_Flag=0; //Acknowledge
 		}
 Nokia5110_DisplayBuffer(); //draw buffer
 
@@ -415,9 +493,11 @@ unsigned long Randomize(unsigned long MIN,unsigned long MAX,unsigned long x){
 //SW1-> Normal_Attack which shoots one laser vertically up
 //SW2-> Special_Attack which shoots multiple lasers
 //The switches are edge-triggered that will set a flag that calls the shooting functions
+
+//--------------Normal_Attack----------------
 void Normal_Attack(void){
 //first initialize the laser
-// The x-position of the laser is the ship midpoint =	player.x + SpaceShip_width/2
+// The x-position of the laser is the ship midpoint =	player.x + SpaceShip_width/2 - Laser_width/2
 	Laser[Laser_number].x = player.x + SpaceShip_width/2-Laser_width/2; // initial laser x-position
 	Laser[Laser_number].y=47-SpaceShip_height; // initial laser y-positions
 	Laser[Laser_number].image[0]=	Laser_Normal;		// ptr -> images 
@@ -455,11 +535,122 @@ void Normal_Attack_update(void){
 		}
 	}
 }
+
+//--------------Special_Attack----------------
 void Special_Attack(void){
-
-
-
+// Special_Attack is 3 large lasers going in 3 direction (135deg,90deg,45deg)
+// first initialize the lasers
+//1)90 deg laser
+// The x-position of the middle special laser is the ship midpoint =	player.x + SpaceShip_width/2 - Special_Laser_width/2
+	Lasers90[Special_Laser_number].x = player.x + SpaceShip_width/2 - Special_Laser_width/2; // initial laser x-position
+	Lasers90[Special_Laser_number].y=47-SpaceShip_height; // initial laser y-positions
+	Lasers90[Special_Laser_number].image[0]=	Laser_s;		// ptr -> images 
+	Lasers90[Special_Laser_number].life=1; // Laser state
+//2)45 deg laser ->
+	//The x-position of the right special laser is =	player.x + SpaceShip_width/2 + Special_Laser_width/2
+	Lasers45[Special_Laser_number].x = player.x + SpaceShip_width/2 + Special_Laser_width/2; // initial laser x-position
+	Lasers45[Special_Laser_number].y=47-SpaceShip_height; // initial laser y-positions
+	Lasers45[Special_Laser_number].image[0]=	Laser_s45;		// ptr -> images 
+	Lasers45[Special_Laser_number].life=1; // Laser state
+//3)135 deg laser <-
+	//The x-position of the left special laser is =	player.x + SpaceShip_width/2 - 3*Special_Laser_width/2
+	Lasers135[Special_Laser_number].x = player.x + SpaceShip_width/2 - 3*Special_Laser_width/2; // initial laser x-position
+	Lasers135[Special_Laser_number].y=47-SpaceShip_height; // initial laser y-positions
+	Lasers135[Special_Laser_number].image[0]=	Laser_s135;		// ptr -> images 
+	Lasers135[Special_Laser_number].life=1; // Laser state
 }
+void Special_Attack_update(void){
+	for(unsigned long r=Special_Laser_number;r>1;r--){
+	// Laser tip
+		unsigned long Lasertip90_x,Lasertip90_y,Lasertip45_x,Lasertip45_y,Lasertip135_x,Lasertip135_y;
+		Lasertip90_x=Lasers90[r-1].x + Special_Laser_width/2;
+		Lasertip90_y=Lasers90[r-1].y - Special_Laser_height;
+		
+		Lasertip45_x=Lasers45[r-1].x + Special_Laser_width;
+		Lasertip45_y=Lasers45[r-1].y - Special_Laser_height;
+		
+		Lasertip135_x=Lasers135[r-1].x - Special_Laser_width;
+		Lasertip135_y=Lasers135[r-1].y - Special_Laser_height;
+	// is there a laser 
+		// 1) 90deg
+		if(Lasers90[r-1].life==1){
+			//check if laser is out of bounds
+			if(Lasers90[r-1].y==0){
+				Lasers90[r-1].life=0;
+			}
+			else{
+				// check if laser hits enemy
+				for(int i=0;i<5;i++){
+					if(Enemy[i].life==1 && Lasertip90_y>=(Enemy[i].y-enemy_height) && Lasertip90_y<=Enemy[i].y  && Lasertip90_x>=Enemy[i].x && Lasertip90_x<=Enemy[i].x +enemy_width){
+						Lasers90[r-1].life=0;
+						Enemy[i].life=0;
+						Explosion_90_x=Enemy[i].x;
+						Explosion_90_y=Enemy[i].y;
+						Explosion_90_Flag=1;
+					}
+				}
+
+				// update the laser position upwards
+				if(Lasers90[r-1].life==1){
+					Lasers90[r-1].y-=1;
+				}
+			}
+		}
+		// 2) 45deg
+		if(Lasers45[r-1].life==1){
+			//check if laser is out of bounds
+			if(Lasers45[r-1].y==0 || (Lasers45[r-1].x+Special_Laser_width)==83){
+				Lasers45[r-1].life=0;
+			}
+			else{
+				// check if laser hits enemy
+				for(int i=0;i<5;i++){
+					if(Enemy[i].life==1 && Lasertip45_y>=(Enemy[i].y-enemy_height) && Lasertip45_y<=Enemy[i].y  && Lasertip45_x>=Enemy[i].x && Lasertip45_x<=Enemy[i].x +enemy_width){
+						Lasers45[r-1].life=0;
+						Enemy[i].life=0;
+						Explosion_45_x=Enemy[i].x;
+						Explosion_45_y=Enemy[i].y;
+						Explosion_45_Flag=1;
+					}
+				}
+
+				// update the laser position in 45deg direction
+				if(Lasers45[r-1].life==1){
+					Lasers45[r-1].y-=1;
+					Lasers45[r-1].x+=1;
+				}
+			}
+		}
+		// 3) 135deg
+		if(Lasers135[r-1].life==1){
+			//check if laser is out of bounds
+			if(Lasers135[r-1].y==0 || (Lasers135[r-1].x+Special_Laser_width)==0){
+				Lasers135[r-1].life=0;
+			}
+			else{
+				// check if laser hits enemy
+				for(int i=0;i<5;i++){
+					if(Enemy[i].life==1 && Lasertip135_y>=(Enemy[i].y-enemy_height) && Lasertip135_y<=Enemy[i].y  && Lasertip135_x>=Enemy[i].x && Lasertip135_x<=Enemy[i].x +enemy_width){
+						Lasers135[r-1].life=0;
+						Enemy[i].life=0;
+						Explosion_135_x=Enemy[i].x;
+						Explosion_135_y=Enemy[i].y;
+						Explosion_135_Flag=1;
+					}
+				}
+
+				// update the laser position in 135deg direction
+				if(Lasers135[r-1].life==1){
+					Lasers135[r-1].y-=1;
+					Lasers135[r-1].x-=1;
+				}
+			}
+		}
+		
+	}
+}
+
+//-------------------Main--------------------
 int main(void){ 
 	//Initializations
   volatile unsigned long delay;
@@ -496,12 +687,14 @@ int main(void){
 			case 0x02:
 				Special_Attack();
 				Attack_Flag=0; //acknowledge
+				Special_Laser_number++;
 				break;
 			default:
 				Attack_Flag=0; //acknowledge
 				break;
 		}
 		Normal_Attack_update();
+		Special_Attack_update();
 		Draw();
 		
 		Flag=0; //Ackowledge systick flag
