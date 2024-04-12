@@ -61,6 +61,7 @@ char String[10]; // null-terminated ASCII string
 unsigned long Distance;   // units 0.001 cm
 unsigned long ADCdata;    // 12-bit 0 to 4095 sample
 unsigned long Flag=0;       // semaphore for enemy movement in the game between systick and main loop
+unsigned long special_attack_timer=0;   
 unsigned long TimerCount=0; 
 unsigned long FrameCount=0; // enemy movement animation
 const unsigned long enemy_width=8;
@@ -99,6 +100,8 @@ NVIC_ST_CTRL_R=0x07;
 void SysTick_Handler(void){ 
 // Flag is a semaphore between SysTick_Handler and handler to call the draw function
 Flag=1;		
+special_attack_timer++;
+	
 }
 
 //--------Initialize_PORT_E-----------
@@ -333,6 +336,7 @@ Stype Laser[20];		// Laser sprites
 Stype Lasers90[20];		// Special Laser sprites 90deg
 Stype Lasers45[20];		// Special Laser sprites 45deg
 Stype Lasers135[20];		// Special Laser sprites 135deg
+Stype Enemy_Laser[20];		// Enemy Laser sprites
 //---------------Enemy_State_Initialization------------
 void Enemy_Init(unsigned long random){
 	unsigned long spacing=5; //space between enemies 
@@ -423,35 +427,29 @@ Nokia5110_ClearBuffer(); // clear display
 		if(player.life>0){
 			Nokia5110_PrintBMP(player.x, player.y, player.image[0], 0);
 		}
-//---normal_attack---
+//---player_attack---
 	// draw the Normal Laser
-		for(unsigned long r=Laser_number;r>1;r--){
+		for(unsigned long r=Laser_number;r>0;r--){
 
-		if(Laser[r-1].life==1){
-			Nokia5110_PrintBMP(Laser[r-1].x, Laser[r-1].y,Laser[r-1].image[0] , 0);
+		if(Laser[r].life==1){
+			Nokia5110_PrintBMP(Laser[r].x, Laser[r].y,Laser[r].image[0] , 0);
 		}
 		}
 	// draw the Special lasers
-		//1)90 deg laser
-		for(unsigned long r=Special_Laser_number;r>1;r--){
-
-		if(Lasers90[r-1].life==1){
-			Nokia5110_PrintBMP(Lasers90[r-1].x, Lasers90[r-1].y,Lasers90[r-1].image[0] , 0);
-		}
-		}
-		//2)45 deg laser
-		for(unsigned long r=Special_Laser_number;r>1;r--){
-
-		if(Lasers45[r-1].life==1){ 
-			Nokia5110_PrintBMP(Lasers45[r-1].x, Lasers45[r-1].y,Lasers45[r-1].image[0] , 0);
-		}
-		}
-		//1)135 deg laser
-		for(unsigned long r=Special_Laser_number;r>1;r--){
-
-		if(Lasers135[r-1].life==1){
-			Nokia5110_PrintBMP(Lasers135[r-1].x, Lasers135[r-1].y,Lasers135[r-1].image[0] , 0);
-		}
+		
+		for(unsigned long r=Special_Laser_number;r>0;r--){
+			//1)90 deg laser
+			if(Lasers90[r].life==1){
+				Nokia5110_PrintBMP(Lasers90[r].x, Lasers90[r].y,Lasers90[r].image[0] , 0);
+			}
+			//2)45 deg laser
+			if(Lasers45[r].life==1){ 
+				Nokia5110_PrintBMP(Lasers45[r].x, Lasers45[r].y,Lasers45[r].image[0] , 0);
+			}
+			//1)135 deg laser
+			if(Lasers135[r].life==1){
+				Nokia5110_PrintBMP(Lasers135[r].x, Lasers135[r].y,Lasers135[r].image[0] , 0);
+			}
 		}
 
 	//draw the Explosion
@@ -497,29 +495,30 @@ unsigned long Randomize(unsigned long MIN,unsigned long MAX,unsigned long x){
 //--------------Normal_Attack----------------
 void Normal_Attack(void){
 //first initialize the laser
-// The x-position of the laser is the ship midpoint =	player.x + SpaceShip_width/2 - Laser_width/2
+// The x-position of the laser is = player.x + SpaceShip_width/2 - Laser_width/2
 	Laser[Laser_number].x = player.x + SpaceShip_width/2-Laser_width/2; // initial laser x-position
-	Laser[Laser_number].y=47-SpaceShip_height; // initial laser y-positions
+	Laser[Laser_number].y=48-SpaceShip_height; // initial laser y-positions
+	//we use 48 instead of 47 because the draw happens after 1 update
 	Laser[Laser_number].image[0]=	Laser_Normal;		// ptr -> images 
 	Laser[Laser_number].life=1; // Laser state
 }
 void Normal_Attack_update(void){
-	for(unsigned long r=Laser_number;r>1;r--){
+	for(unsigned long r=Laser_number;r>0;r--){
 	// Laser tip
 		unsigned long Lasertip_x,Lasertip_y;
-		Lasertip_x=Laser[r-1].x+Laser_width/2;
-		Lasertip_y=Laser[r-1].y-Laser_height;
+		Lasertip_x=Laser[r].x+Laser_width/2;
+		Lasertip_y=Laser[r].y-Laser_height;
 		// is there a laser
-		if(Laser[r-1].life==1){
+		if(Laser[r].life==1){
 			//check if laser is out of bounds
-			if(Laser[r-1].y==0){
-				Laser[r-1].life=0;
+			if(Laser[r].y==0){
+				Laser[r].life=0;
 			}
 			else{
 				// check if laser hits enemy
 				for(int i=0;i<5;i++){
 					if(Enemy[i].life==1 && Lasertip_y>=(Enemy[i].y-enemy_height) && Lasertip_y<=Enemy[i].y  && Lasertip_x>=Enemy[i].x && Lasertip_x<=Enemy[i].x +enemy_width){
-						Laser[r-1].life=0;
+						Laser[r].life=0;
 						Enemy[i].life=0;
 						Explosion_x=Enemy[i].x;
 						Explosion_y=Enemy[i].y;
@@ -528,8 +527,8 @@ void Normal_Attack_update(void){
 				}
 
 				// update the laser position upwards
-				if(Laser[r-1].life==1){
-					Laser[r-1].y-=1;
+				if(Laser[r].life==1){
+					Laser[r].y-=1;
 				}
 			}
 		}
@@ -543,46 +542,46 @@ void Special_Attack(void){
 //1)90 deg laser
 // The x-position of the middle special laser is the ship midpoint =	player.x + SpaceShip_width/2 - Special_Laser_width/2
 	Lasers90[Special_Laser_number].x = player.x + SpaceShip_width/2 - Special_Laser_width/2; // initial laser x-position
-	Lasers90[Special_Laser_number].y=47-SpaceShip_height; // initial laser y-positions
+	Lasers90[Special_Laser_number].y=48-SpaceShip_height; // initial laser y-positions
 	Lasers90[Special_Laser_number].image[0]=	Laser_s;		// ptr -> images 
 	Lasers90[Special_Laser_number].life=1; // Laser state
 //2)45 deg laser ->
 	//The x-position of the right special laser is =	player.x + SpaceShip_width/2 + Special_Laser_width/2
 	Lasers45[Special_Laser_number].x = player.x + SpaceShip_width/2 + Special_Laser_width/2; // initial laser x-position
-	Lasers45[Special_Laser_number].y=47-SpaceShip_height; // initial laser y-positions
+	Lasers45[Special_Laser_number].y=48-SpaceShip_height; // initial laser y-positions
 	Lasers45[Special_Laser_number].image[0]=	Laser_s45;		// ptr -> images 
 	Lasers45[Special_Laser_number].life=1; // Laser state
 //3)135 deg laser <-
 	//The x-position of the left special laser is =	player.x + SpaceShip_width/2 - 3*Special_Laser_width/2
 	Lasers135[Special_Laser_number].x = player.x + SpaceShip_width/2 - 3*Special_Laser_width/2; // initial laser x-position
-	Lasers135[Special_Laser_number].y=47-SpaceShip_height; // initial laser y-positions
+	Lasers135[Special_Laser_number].y=48-SpaceShip_height; // initial laser y-positions
 	Lasers135[Special_Laser_number].image[0]=	Laser_s135;		// ptr -> images 
 	Lasers135[Special_Laser_number].life=1; // Laser state
 }
 void Special_Attack_update(void){
-	for(unsigned long r=Special_Laser_number;r>1;r--){
+	for(unsigned long r=Special_Laser_number;r>0;r--){
 	// Laser tip
 		unsigned long Lasertip90_x,Lasertip90_y,Lasertip45_x,Lasertip45_y,Lasertip135_x,Lasertip135_y;
-		Lasertip90_x=Lasers90[r-1].x + Special_Laser_width/2;
-		Lasertip90_y=Lasers90[r-1].y - Special_Laser_height;
+		Lasertip90_x=Lasers90[r].x + Special_Laser_width/2;
+		Lasertip90_y=Lasers90[r].y - Special_Laser_height;
 		
-		Lasertip45_x=Lasers45[r-1].x + Special_Laser_width;
-		Lasertip45_y=Lasers45[r-1].y - Special_Laser_height;
+		Lasertip45_x=Lasers45[r].x + Special_Laser_width;
+		Lasertip45_y=Lasers45[r].y - Special_Laser_height;
 		
-		Lasertip135_x=Lasers135[r-1].x - Special_Laser_width;
-		Lasertip135_y=Lasers135[r-1].y - Special_Laser_height;
+		Lasertip135_x=Lasers135[r].x - Special_Laser_width;
+		Lasertip135_y=Lasers135[r].y - Special_Laser_height;
 	// is there a laser 
 		// 1) 90deg
-		if(Lasers90[r-1].life==1){
+		if(Lasers90[r].life==1){
 			//check if laser is out of bounds
-			if(Lasers90[r-1].y==0){
-				Lasers90[r-1].life=0;
+			if(Lasers90[r].y==0){
+				Lasers90[r].life=0;
 			}
 			else{
 				// check if laser hits enemy
 				for(int i=0;i<5;i++){
 					if(Enemy[i].life==1 && Lasertip90_y>=(Enemy[i].y-enemy_height) && Lasertip90_y<=Enemy[i].y  && Lasertip90_x>=Enemy[i].x && Lasertip90_x<=Enemy[i].x +enemy_width){
-						Lasers90[r-1].life=0;
+						Lasers90[r].life=0;
 						Enemy[i].life=0;
 						Explosion_90_x=Enemy[i].x;
 						Explosion_90_y=Enemy[i].y;
@@ -591,22 +590,22 @@ void Special_Attack_update(void){
 				}
 
 				// update the laser position upwards
-				if(Lasers90[r-1].life==1){
-					Lasers90[r-1].y-=1;
+				if(Lasers90[r].life==1){
+					Lasers90[r].y-=1;
 				}
 			}
 		}
 		// 2) 45deg
-		if(Lasers45[r-1].life==1){
+		if(Lasers45[r].life==1){
 			//check if laser is out of bounds
-			if(Lasers45[r-1].y==0 || (Lasers45[r-1].x+Special_Laser_width)==83){
-				Lasers45[r-1].life=0;
+			if(Lasers45[r].y==0 || (Lasers45[r].x+Special_Laser_width)==83){
+				Lasers45[r].life=0;
 			}
 			else{
 				// check if laser hits enemy
 				for(int i=0;i<5;i++){
 					if(Enemy[i].life==1 && Lasertip45_y>=(Enemy[i].y-enemy_height) && Lasertip45_y<=Enemy[i].y  && Lasertip45_x>=Enemy[i].x && Lasertip45_x<=Enemy[i].x +enemy_width){
-						Lasers45[r-1].life=0;
+						Lasers45[r].life=0;
 						Enemy[i].life=0;
 						Explosion_45_x=Enemy[i].x;
 						Explosion_45_y=Enemy[i].y;
@@ -615,23 +614,23 @@ void Special_Attack_update(void){
 				}
 
 				// update the laser position in 45deg direction
-				if(Lasers45[r-1].life==1){
-					Lasers45[r-1].y-=1;
-					Lasers45[r-1].x+=1;
+				if(Lasers45[r].life==1){
+					Lasers45[r].y-=1;
+					Lasers45[r].x+=1;
 				}
 			}
 		}
 		// 3) 135deg
-		if(Lasers135[r-1].life==1){
+		if(Lasers135[r].life==1){
 			//check if laser is out of bounds
-			if(Lasers135[r-1].y==0 || (Lasers135[r-1].x+Special_Laser_width)==0){
-				Lasers135[r-1].life=0;
+			if(Lasers135[r].y==0 || (Lasers135[r].x+Special_Laser_width)==0){
+				Lasers135[r].life=0;
 			}
 			else{
 				// check if laser hits enemy
 				for(int i=0;i<5;i++){
 					if(Enemy[i].life==1 && Lasertip135_y>=(Enemy[i].y-enemy_height) && Lasertip135_y<=Enemy[i].y  && Lasertip135_x>=Enemy[i].x && Lasertip135_x<=Enemy[i].x +enemy_width){
-						Lasers135[r-1].life=0;
+						Lasers135[r].life=0;
 						Enemy[i].life=0;
 						Explosion_135_x=Enemy[i].x;
 						Explosion_135_y=Enemy[i].y;
@@ -640,9 +639,9 @@ void Special_Attack_update(void){
 				}
 
 				// update the laser position in 135deg direction
-				if(Lasers135[r-1].life==1){
-					Lasers135[r-1].y-=1;
-					Lasers135[r-1].x-=1;
+				if(Lasers135[r].life==1){
+					Lasers135[r].y-=1;
+					Lasers135[r].x-=1;
 				}
 			}
 		}
@@ -680,14 +679,18 @@ int main(void){
 		//Laser Attack
 		switch(Attack_Flag){
 			case 0x01:
+				Laser_number= Laser_number%20 + 1; //Next laser 1,2....20,1,2...
 				Normal_Attack();
 				Attack_Flag=0;  //acknowledge
-				Laser_number++; //Next laser
 				break;
 			case 0x02:
+				//simce special_attack is strong its use is time limited
+				if(special_attack_timer>40){
+				Special_Laser_number=Special_Laser_number%20 + 1; //Next laser 1,2....20,1,2...
 				Special_Attack();
+				special_attack_timer=0;
+				}
 				Attack_Flag=0; //acknowledge
-				Special_Laser_number++;
 				break;
 			default:
 				Attack_Flag=0; //acknowledge
@@ -696,7 +699,6 @@ int main(void){
 		Normal_Attack_update();
 		Special_Attack_update();
 		Draw();
-		
 		Flag=0; //Ackowledge systick flag
 	}
 }
