@@ -31,21 +31,6 @@
 // SS3 1st sample source:  channel 1
 // SS3 interrupts: enabled but not promoted to controller
 void ADC0_Init(void){ volatile unsigned long delay;
-	//configure PF1
-	SYSCTL_RCGC2_R|=0x20;     // enable clock of portE
-	delay=SYSCTL_RCGC2_R;
-	GPIO_PORTF_DIR_R|=0x02;  // PF1 output
-	GPIO_PORTF_AFSEL_R&=~0x02; // disable alt functions on PE2
-	GPIO_PORTF_DEN_R|=0x02;  // enable digital I/O function on PE2
-	GPIO_PORTF_AMSEL_R&=~0x02; // disable analog on PE2
-	
-	// GPIO pin configuration
-  SYSCTL_RCGC2_R|=0x10;     // enable clock of portE
-	delay=SYSCTL_RCGC2_R;
-	GPIO_PORTE_DIR_R&=~0x04;  // PE2 input
-	GPIO_PORTE_AFSEL_R|=0x04; // enable alt functions on PE2
-	GPIO_PORTE_DEN_R&=~0x04;  // disable digital I/O function on PE2
-	GPIO_PORTE_AMSEL_R|=0x04; // enable analog on PE2
 	// ADC initializtion
 	SYSCTL_RCGC0_R|=0x10000;    // enable clock for ADC0 (bit16)
 	SYSCTL_RCGC0_R&=~0x300;     // set sample rate to 125,000 samples/second (bits8-9 oxoo)
