@@ -180,7 +180,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(9106=436,155,655,322,1)(9104=180,121,586,402,0)(9107=706,147,1169,496,1)(9102=755,146,1161,430,0)</Name>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(9106=443,118,662,285,1)(9104=180,121,586,402,0)(9107=706,147,1169,496,1)(9102=755,146,1161,430,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -274,6 +274,16 @@
           <count>13</count>
           <WinNumber>1</WinNumber>
           <ItemText>player</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>level_complete_Flag,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Enemy</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

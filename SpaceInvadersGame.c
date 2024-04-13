@@ -45,7 +45,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <time.h>
 #include "ADC.h"
 #include "..//tm4c123gh6pm.h"
 #include "Nokia5110.h"
@@ -95,6 +94,7 @@ unsigned long Explosion_45_Flag=0;
 unsigned long Explosion_135_x;
 unsigned long Explosion_135_y;
 unsigned long Explosion_135_Flag=0;
+unsigned level_complete_Flag=0;
 //--------Initialize SysTick interrupts to trigger at 40Hz--------
 void SysTick_Init(unsigned long period){
 NVIC_ST_CTRL_R=0;
@@ -318,6 +318,8 @@ const unsigned char image[] ={
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF,
 
 };
+
+
 
 //-------------Delay_Function----------------
 void Delay1ms(unsigned long time){
@@ -674,9 +676,15 @@ void Special_Attack_update(void){
 // the enemies shoot lasers at the player periodically
 // to make it interesting the enemies that shoot is randomly selected using the randomize function
 void Enemy_attacks(void){
+//check for living enemies
+	unsigned long living=0;
+	for(int alive=0;alive<5;alive++){
+	if(Enemy[alive].life==1){
+		living++;}
+	}
+	if(living>0){
 //first randomizing the attacks
 //1) pick a random number from 0 to 3 that's the index of the enemy that will attack
-//	srand((unsigned) time(NULL));
 	unsigned long n;
 	do {
   n=rand()%5;
@@ -689,6 +697,9 @@ void Enemy_attacks(void){
 	Enemy_Laser[Enemy_Laser_number].y = Enemy[n].y + Laser_height - 1; // initial enemy laser y-positions (-1) for the 1st update
 	Enemy_Laser[Enemy_Laser_number].image[0]=	Enemy_Lasers;		// ptr -> images 
 	Enemy_Laser[Enemy_Laser_number].life=1; // Laser state
+}
+	else{
+	level_complete_Flag=1;}
 }
 void Enemy_attacks_update(void){
 for(unsigned long r=Enemy_Laser_number;r>0;r--){
@@ -746,7 +757,7 @@ int main(void){
 	SpaceShip_Init(); //player_State_Initialization
 	Draw();//draw the characters
   while(1){ 
-		
+		if(player.life>0){
 		// Wait for Flag to be 1 then animate the game
 		while(Flag==0){};
 		// move sprites
@@ -759,11 +770,11 @@ int main(void){
 				Attack_Flag=0;  //acknowledge
 				break;
 			case 0x02:
-				//simce special_attack is strong its use is time limited
+				//since special_attack is strong its use is time limited
 				if(special_attack_timer>40){
 				Special_Laser_number=Special_Laser_number%19 + 1; //Next laser 1,2....19,1,2...
 				Special_Attack();
-				special_attack_timer=0;
+				special_attack_timer=0; //reset timer
 				}
 				Attack_Flag=0; //acknowledge
 				break;
@@ -775,13 +786,27 @@ int main(void){
 		if (enemy_attack_timer>enemy_laser_pass){
 			Enemy_Laser_number=Enemy_Laser_number%19 + 1; //Next laser 1,2....19,1,2...
 			Enemy_attacks();
-			enemy_attack_timer=0; 
+			enemy_attack_timer=0;  //reset timer
 		}
+		if(level_complete_Flag==1){
+		Nokia5110_ClearBuffer();
+		Nokia5110_DisplayBuffer();
+		}
+		else{
 		//update lasers
 		Normal_Attack_update();
 		Special_Attack_update();
 		Enemy_attacks_update();
 		Draw();
 		Flag=0; //Ackowledge systick flag
+		}
+	}
+		else{
+			Nokia5110_ClearBuffer();
+			Nokia5110_DisplayBuffer();
+			while(Attack_Flag!=1){};
+				Attack_Flag=0; //acknowledge
+				player.life=3;
+		}
 	}
 }
