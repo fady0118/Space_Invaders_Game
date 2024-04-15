@@ -46,6 +46,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "ADC.h"
+#include "Sound.h"
 #include "..//tm4c123gh6pm.h"
 #include "Nokia5110.h"
 #include "TExaS.h"
@@ -95,6 +96,7 @@ unsigned long Explosion_135_x;
 unsigned long Explosion_135_y;
 unsigned long Explosion_135_Flag=0;
 unsigned level_complete_Flag=0;
+extern unsigned long Sound_length;
 //--------Initialize SysTick interrupts to trigger at 40Hz--------
 void SysTick_Init(unsigned long period){
 NVIC_ST_CTRL_R=0;
@@ -396,6 +398,7 @@ Nokia5110_ClearBuffer(); // clear display
 		if(Explosion_Flag==1){
 		Nokia5110_PrintBMP(Explosion_x, Explosion_y,Explosion_1 , 0);
 			Explosion_Flag=0; //Acknowledge
+			
 		}
 		if(Player_Explosion_Flag==1){
 		Nokia5110_PrintBMP(Player_Explosion_x, Player_Explosion_y,Player_Explosion , 0);
@@ -468,6 +471,8 @@ void Normal_Attack_update(void){
 						Explosion_x=Enemy[i].x;
 						Explosion_y=Enemy[i].y;
 						Explosion_Flag=1;
+						Timer2A_Stop();
+						Sound_Tone(9556);
 					}
 				}
 
@@ -666,6 +671,8 @@ int main(void){
 	Nokia5110_Init();        // initialize Nokia5110 LCD (optional)
 	SysTick_Init(2000000);   // initialize SysTick for 40 Hz interrupts
 	PORTE_Init();
+	Sound_Init();
+	Timer2A_Stop();
   EnableInterrupts();      // enable interrupts after initializations
 	
 // print the game splash screen Message/image
@@ -684,6 +691,7 @@ int main(void){
 	Draw();//draw the characters
   while(1){ 
 		if(player.life>0){
+		//	Sound_Tone(9556); // C5 note 523.25Hz/16
 		// Wait for Flag to be 1 then animate the game
 		while(Flag==0){};
 		// move sprites
@@ -727,6 +735,9 @@ int main(void){
 		Enemy_attacks_update();
 		Draw();
 		Flag=0; //Ackowledge systick flag
+		if(Sound_length>5000){
+			Timer2A_Stop();
+		}
 		}
 	}
 		else{

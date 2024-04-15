@@ -140,22 +140,22 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DAC_R3</Key>
-          <Name>0</Name>
+          <Name>1069547520</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>DAC_R2</Key>
-          <Name>0</Name>
+          <Name>1077936128</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>DAC_R1</Key>
-          <Name>0</Name>
+          <Name>1086324736</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>DAC_R0</Key>
-          <Name>0</Name>
+          <Name>1094713344</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -180,7 +180,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(9106=390,183,609,350,1)(9104=180,121,586,402,0)(9107=706,147,1169,496,1)(9102=755,146,1161,430,0)</Name>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(9106=644,391,863,558,1)(9104=879,408,1285,689,1)(9107=706,147,1169,496,1)(9102=755,146,1161,430,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -285,6 +285,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>Enemy</ItemText>
         </Ww>
+        <Ww>
+          <count>16</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>Sound_length,0x0A</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -352,7 +357,12 @@
         <Wi>
           <IntNumber>0</IntNumber>
           <FirstString>((PortF &amp; 0x00000002) &gt;&gt; 1 &amp; 0x2) &gt;&gt; 1</FirstString>
-          <SecondString>FF00000000000000000000000000E0FFFFFFEF410100000000000000000000000000000028506F7274462026203078303030303030303229203E3E2031000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000F03F1B0000000000000000000000000000000000000020090000</SecondString>
+          <SecondString>FF00000000000000000000000000E0FFFFFFEF410100000000000000000000000000000028506F7274462026203078303030303030303229203E3E2031000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000E03F0F0000000000000000000000000000000000000020090000</SecondString>
+        </Wi>
+        <Wi>
+          <IntNumber>1</IntNumber>
+          <FirstString>`DACOUT</FirstString>
+          <SecondString>0000800000000000000000006666666666660A40000000000000000000000000000000004441434F555400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000700000002000000000000000000E03F0F00000000000000000000000000000000000000D81F0000</SecondString>
         </Wi>
       </LogicAnalyzers>
     </TargetOption>
@@ -404,11 +414,35 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\ADC.c</PathWithFileName>
       <FilenameWithoutPath>ADC.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>5</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>1</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Sound.c</PathWithFileName>
+      <FilenameWithoutPath>Sound.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>6</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\DAC.c</PathWithFileName>
+      <FilenameWithoutPath>DAC.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -422,7 +456,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>5</FileNumber>
+      <FileNumber>7</FileNumber>
       <FileType>3</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
